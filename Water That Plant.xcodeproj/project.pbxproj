@@ -11,6 +11,18 @@
 		F947E2B52A2B321400DD91DD /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2B42A2B321400DD91DD /* ContentView.swift */; };
 		F947E2B72A2B321500DD91DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F947E2B62A2B321500DD91DD /* Assets.xcassets */; };
 		F947E2BA2A2B321500DD91DD /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F947E2B92A2B321500DD91DD /* Preview Assets.xcassets */; };
+		F947E2C32A2B32A100DD91DD /* Plant.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F947E2C02A2B32A100DD91DD /* Plant.xcdatamodeld */; };
+		F947E2C72A2B33AD00DD91DD /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2C62A2B33AD00DD91DD /* BLEManager.swift */; };
+		F947E2CD2A2B38D000DD91DD /* SensorsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2CB2A2B38D000DD91DD /* SensorsListViewModel.swift */; };
+		F947E2CE2A2B38D000DD91DD /* SensorsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2CA2A2B38D000DD91DD /* SensorsListView.swift */; };
+		F947E2CF2A2B38D000DD91DD /* SensorModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2CC2A2B38D000DD91DD /* SensorModel.swift */; };
+		F947E2D52A2B3C7500DD91DD /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2D42A2B3C7500DD91DD /* PlantView.swift */; };
+		F947E2D72A2BB82F00DD91DD /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2D62A2BB82F00DD91DD /* PersistenceController.swift */; };
+		F947E2D92A2D073C00DD91DD /* CDPlant+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2D82A2D073C00DD91DD /* CDPlant+Extension.swift */; };
+		F947E2DB2A2D0C0C00DD91DD /* PlantCurrentConditionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2DA2A2D0C0C00DD91DD /* PlantCurrentConditionsView.swift */; };
+		F947E2DE2A2D0C3300DD91DD /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2DD2A2D0C3300DD91DD /* ProgressBarView.swift */; };
+		F947E2EC2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2EB2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift */; };
+		F9A780452A3A59B600F6E3AA /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A780442A3A59B600F6E3AA /* PlantViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +31,18 @@
 		F947E2B42A2B321400DD91DD /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		F947E2B62A2B321500DD91DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F947E2B92A2B321500DD91DD /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F947E2C12A2B32A100DD91DD /* Plant.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Plant.xcdatamodel; sourceTree = "<group>"; };
+		F947E2C62A2B33AD00DD91DD /* BLEManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
+		F947E2CA2A2B38D000DD91DD /* SensorsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsListView.swift; sourceTree = "<group>"; };
+		F947E2CB2A2B38D000DD91DD /* SensorsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorsListViewModel.swift; sourceTree = "<group>"; };
+		F947E2CC2A2B38D000DD91DD /* SensorModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorModel.swift; sourceTree = "<group>"; };
+		F947E2D42A2B3C7500DD91DD /* PlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
+		F947E2D62A2BB82F00DD91DD /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		F947E2D82A2D073C00DD91DD /* CDPlant+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CDPlant+Extension.swift"; sourceTree = "<group>"; };
+		F947E2DA2A2D0C0C00DD91DD /* PlantCurrentConditionsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantCurrentConditionsView.swift; sourceTree = "<group>"; };
+		F947E2DD2A2D0C3300DD91DD /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		F947E2EB2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButtonModifier.swift; sourceTree = "<group>"; };
+		F9A780442A3A59B600F6E3AA /* PlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +77,11 @@
 			children = (
 				F947E2B22A2B321400DD91DD /* Water_That_PlantApp.swift */,
 				F947E2B42A2B321400DD91DD /* ContentView.swift */,
+				F947E2DC2A2D0C1200DD91DD /* PlantView */,
+				F947E2D02A2B38DA00DD91DD /* SensorList */,
+				F947E2D12A2B38F800DD91DD /* Managers */,
+				F947E2C52A2B32A900DD91DD /* CoreData */,
+				F947E2ED2A31FB6700DD91DD /* SupportFiles */,
 				F947E2B62A2B321500DD91DD /* Assets.xcassets */,
 				F947E2B82A2B321500DD91DD /* Preview Content */,
 			);
@@ -65,6 +94,53 @@
 				F947E2B92A2B321500DD91DD /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F947E2C52A2B32A900DD91DD /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				F947E2D62A2BB82F00DD91DD /* PersistenceController.swift */,
+				F947E2D82A2D073C00DD91DD /* CDPlant+Extension.swift */,
+				F947E2C02A2B32A100DD91DD /* Plant.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		F947E2D02A2B38DA00DD91DD /* SensorList */ = {
+			isa = PBXGroup;
+			children = (
+				F947E2CC2A2B38D000DD91DD /* SensorModel.swift */,
+				F947E2CA2A2B38D000DD91DD /* SensorsListView.swift */,
+				F947E2CB2A2B38D000DD91DD /* SensorsListViewModel.swift */,
+			);
+			path = SensorList;
+			sourceTree = "<group>";
+		};
+		F947E2D12A2B38F800DD91DD /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				F947E2C62A2B33AD00DD91DD /* BLEManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F947E2DC2A2D0C1200DD91DD /* PlantView */ = {
+			isa = PBXGroup;
+			children = (
+				F947E2D42A2B3C7500DD91DD /* PlantView.swift */,
+				F9A780442A3A59B600F6E3AA /* PlantViewModel.swift */,
+				F947E2DA2A2D0C0C00DD91DD /* PlantCurrentConditionsView.swift */,
+				F947E2DD2A2D0C3300DD91DD /* ProgressBarView.swift */,
+			);
+			path = PlantView;
+			sourceTree = "<group>";
+		};
+		F947E2ED2A31FB6700DD91DD /* SupportFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F947E2EB2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift */,
+			);
+			path = SupportFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +213,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F947E2EC2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift in Sources */,
 				F947E2B52A2B321400DD91DD /* ContentView.swift in Sources */,
+				F947E2DE2A2D0C3300DD91DD /* ProgressBarView.swift in Sources */,
+				F947E2CD2A2B38D000DD91DD /* SensorsListViewModel.swift in Sources */,
+				F947E2C72A2B33AD00DD91DD /* BLEManager.swift in Sources */,
+				F947E2C32A2B32A100DD91DD /* Plant.xcdatamodeld in Sources */,
+				F947E2D72A2BB82F00DD91DD /* PersistenceController.swift in Sources */,
+				F947E2CE2A2B38D000DD91DD /* SensorsListView.swift in Sources */,
+				F9A780452A3A59B600F6E3AA /* PlantViewModel.swift in Sources */,
 				F947E2B32A2B321400DD91DD /* Water_That_PlantApp.swift in Sources */,
+				F947E2CF2A2B38D000DD91DD /* SensorModel.swift in Sources */,
+				F947E2D92A2D073C00DD91DD /* CDPlant+Extension.swift in Sources */,
+				F947E2DB2A2D0C0C00DD91DD /* PlantCurrentConditionsView.swift in Sources */,
+				F947E2D52A2B3C7500DD91DD /* PlantView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,11 +358,14 @@
 				DEVELOPMENT_TEAM = 7P7SAEN4YN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "\"Used to find plant sensor\"";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "\"Used to find plant sensor\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,11 +390,14 @@
 				DEVELOPMENT_TEAM = 7P7SAEN4YN;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "\"Used to find plant sensor\"";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "\"Used to find plant sensor\"";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -339,6 +433,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F947E2C02A2B32A100DD91DD /* Plant.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F947E2C12A2B32A100DD91DD /* Plant.xcdatamodel */,
+			);
+			currentVersion = F947E2C12A2B32A100DD91DD /* Plant.xcdatamodel */;
+			path = Plant.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = F947E2A72A2B321400DD91DD /* Project object */;
 }

@@ -6,21 +6,42 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ContentView: View {
+    @FetchRequest(sortDescriptors: []) var plants: FetchedResults<Plant>
+    @Environment(\.managedObjectContext) var moc
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+        NavigationStack {
+            List(plants, id: \.self) { plant in
+                NavigationLink(plant.name ?? ""){
+                   PlantView(plant: plant)
+                }
+            }
+            .navigationTitle("Plants")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Add") {
+                        let plant = Plant(context: moc)
+                        plant.name = "Kaktus"
+                        plant.selectedRoom = .bathroom
+                        plant.currentSoilHumidity = 21.37
+                        plant.currentLighting = 2
+                        plant.currentFertilizer = 79
+                        try? moc.save()
+                    }
+                }
+            }
         }
-        .padding()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
+    static let context = PersistenceController.previewList.container.viewContext
     static var previews: some View {
+        
         ContentView()
+            .environment(\.managedObjectContext, context)
     }
 }
