@@ -103,113 +103,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "C8B7D0CA-4EB3-4994-B11A-CCBC4C2B3820"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Water That Plant/PlantView/PlantView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "11"
-            endingLineNumber = "11"
-            landmarkName = "PlantView"
-            landmarkType = "14">
-            <Locations>
-               <Location
-                  uuid = "C8B7D0CA-4EB3-4994-B11A-CCBC4C2B3820 - fbadc1e50ef87f2e"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Water_That_Plant.PlantView.moc.getter : __C.NSManagedObjectContext"
-                  moduleName = "Water That Plant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/PlantView/PlantView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "C8B7D0CA-4EB3-4994-B11A-CCBC4C2B3820 - 84c62c0923bf90c9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Water_That_Plant.PlantView.init(plant: Water_That_Plant.Plant) -&gt; Water_That_Plant.PlantView"
-                  moduleName = "Water That Plant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/PlantView/PlantView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "11"
-                  endingLineNumber = "11"
-                  offsetFromSymbolStart = "76">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "EC4D0401-0442-4B88-85CF-D8048F1E751C"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Water That Plant/PlantView/PlantViewModel.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "hasChanges()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "96CEB9C5-30D1-472E-820B-C69FAB39AB2B"
+            uuid = "E4864B20-E128-466F-8ABF-418352DE40E6"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Water That Plant/PlantView/PlantViewModel.swift"
+            filePath = "Water That Plant/CoreData/CDPlant+Extension.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "54"
-            endingLineNumber = "54"
-            landmarkName = "hasChanges()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "96CEB9C5-30D1-472E-820B-C69FAB39AB2B - a17b2d1cf996a3b9"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Water_That_Plant.PlantViewModel.hasChanges() -&gt; Swift.Bool"
-                  moduleName = "Water That Plant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/PlantView/PlantViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "54"
-                  endingLineNumber = "54"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  uuid = "96CEB9C5-30D1-472E-820B-C69FAB39AB2B - a17b2d1cf996dc50"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Water_That_Plant.PlantViewModel.hasChanges() -&gt; Swift.Bool"
-                  moduleName = "Water That Plant"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/PlantView/PlantViewModel.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "63"
-                  endingLineNumber = "63"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
+            startingLineNumber = "77"
+            endingLineNumber = "77"
+            landmarkName = "image"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B2D82B2A-BA11-4CF4-B329-7B2313F5B65C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Water That Plant/CoreData/CDPlant+Extension.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "image"
+            landmarkType = "24">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87413FF4-10FD-4C34-B254-92DC2A26CF00"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Water That Plant/PlantList/PlantTile.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "body"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

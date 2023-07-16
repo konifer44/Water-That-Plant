@@ -10,6 +10,26 @@ import SwiftUI
 import CoreData
 
 extension Plant {
+    var name: String {
+        get {
+            return self.nameRawValue ?? ""
+        }
+        
+        set {
+            self.nameRawValue = newValue
+        }
+    }
+    
+    var dateOfBuy: Date {
+        get {
+            return self.dateOfBuyRawValue ?? Date()
+        }
+        
+        set {
+            self.dateOfBuyRawValue = newValue
+        }
+    }
+    
     var selectedRoom: RoomsType {
         get {
             return RoomsType(rawValue: self.selectedRoomRawValue ?? "") ?? .defaultRoom
@@ -47,6 +67,22 @@ extension Plant {
         
         set {
             self.recommendedSoilHumidityRawValue =  Int16(newValue.rawValue)
+        }
+    }
+    
+    var image: UIImage {
+        get {
+            if let data = self.imageData,
+               let image = UIImage(data: data) {
+                return image
+            } else {
+                return UIImage()
+            }
+           
+        }
+        
+        set {
+            self.imageData = newValue.pngData()
         }
     }
   
@@ -94,15 +130,6 @@ enum RecommendedLightingType: Int, CaseIterable {
         case .high:      return 80...100
         }
     }
-    
-//    init(_ humidity: Int) {
-//        switch (humidity) {
-//        case RecommendedLighting.low.range:    self = .low
-//        case RecommendedLighting.medium.range: self = .medium
-//        case RecommendedLighting.high.range:      self = .high
-//        default: fatalError()
-//        }
-//    }
 }
 
 enum RecommendedFertilizationType: String, CaseIterable {

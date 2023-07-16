@@ -8,19 +8,20 @@
 import SwiftUI
 
 struct PlantView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.dismiss) var dismiss
     @FocusState private var focusState: Bool
     
-    @StateObject var viewModel: PlantViewModel
-    
-    var bleManager = BLEManager.shared
-    
+    @ObservedObject var viewModel: PlantViewModel
+ 
     @State var isEdited: Bool = false
     @State private var showingSaveErrorAlert = false
     @State private var showingSaveOrCancelAlert = false
+    @State private var showingDeletePlantAlert = false
+  
+    var bleManager = BLEManager.shared
     
-    init(plant: Plant) {
-        _viewModel = StateObject(wrappedValue: PlantViewModel(plant: plant))
+    init(viewModel: PlantViewModel) {
+        self.viewModel = viewModel
     }
     
     var body: some View {
@@ -35,13 +36,13 @@ struct PlantView: View {
             Group{
                 switch isEdited {
                 case true:
-                    TextField(viewModel.plant.name ?? "Enter name", text: $viewModel.newName)
-                        .modifier(TextFieldClearButton(text: $viewModel.newName))
+                    TextField(viewModel.plant.name.isEmpty ? "Enter name" : viewModel.plant.name, text: $viewModel.plant.name)
+                        .modifier(TextFieldClearButton(text: $viewModel.plant.name))
                         .foregroundColor(.gray)
                         .padding(.bottom, 0.5)
-                        .focused($focusState)
+                      //  .focused($focusState)
                 case false:
-                    Text(viewModel.plant.name ?? "")
+                    Text(viewModel.plant.name)
                         .font(.title)
                 }
             }
@@ -57,16 +58,15 @@ struct PlantView: View {
                         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                 }
                 
-                VStack {
-                    HStack {
-                        Image(systemName: "line.3.horizontal")
-                        Text("PLANT DETAILS")
-                        Spacer()
-                    }
-                    .font(.body)
-                    .foregroundColor(.gray)
-                }
                 
+               HStack {
+                    Image(systemName: "line.3.horizontal")
+                    Text("PLANT DETAILS")
+                   
+                }
+                .font(.body)
+                .foregroundColor(.gray)
+                .alignmentGuide(.listRowSeparatorLeading) { _ in return 0 }
                 
                 HStack{
                     Text("Room Location:")
@@ -89,7 +89,7 @@ struct PlantView: View {
                     Spacer()
                     switch isEdited {
                     case true:
-                        Picker("", selection: $viewModel.selectedRecommendedHumidity){
+                        Picker("", selection: $viewModel.plant.recommendedHumidity){
                             ForEach(RecommendedHumidityType.allCases, id: \.self){
                                 Text("\($0.range.lowerBound)-\($0.range.upperBound)%")
                             }
@@ -105,7 +105,7 @@ struct PlantView: View {
                     Spacer()
                     switch isEdited {
                     case true:
-                        Picker("", selection: $viewModel.selectedRecommendedLighting){
+                        Picker("", selection: $viewModel.plant.recommendedLighting){
                             ForEach(RecommendedLightingType.allCases, id: \.self){
                                 Text("\($0.range.lowerBound)-\($0.range.upperBound)%")
                             }
@@ -121,7 +121,7 @@ struct PlantView: View {
                     switch isEdited {
                     case true:
                         Spacer()
-                        Picker("", selection: $viewModel.selectedRecommendedFertilization){
+                        Picker("", selection: $viewModel.plant.recommendedFertilization){
                             ForEach(RecommendedFertilizationType.allCases, id: \.self){
                                 Text($0.rawValue)
                             }
@@ -137,11 +137,12 @@ struct PlantView: View {
                     Spacer()
                     switch isEdited {
                     case true:
-                        DatePicker("", selection: $viewModel.selectedDate, in: ...Date(), displayedComponents: .date)
+                        DatePicker("", selection: $viewModel.plant.dateOfBuy, in: ...Date(), displayedComponents: .date)
                           .labelsHidden()
+                       
                         Text("")
                     case false:
-                        Text(viewModel.plant.dateOfBuy?.addingTimeInterval(600) ?? Date(), style: .date)
+                        Text(viewModel.plant.dateOfBuy.addingTimeInterval(600), style: .date)
                     }
                 }
                 
@@ -150,7 +151,7 @@ struct PlantView: View {
                     Spacer()
                     switch isEdited {
                     case true:
-                        Toggle("", isOn: $viewModel.selectedIsFavourite)
+                        Toggle("", isOn: $viewModel.plant.isFavourite)
                     case false:
                         Text("\(viewModel.plant.isFavourite ? "Yes" : "No")")
                     }
@@ -162,16 +163,35 @@ struct PlantView: View {
                     switch isEdited {
                     case true:
                         NavigationLink(""){
-                            SensorsListView(bindedPeripheralIdentifier: $viewModel.selectedPeripheralUUID, alertItemTitle: viewModel.plant.name ?? "plant")
+                            SensorsListView(bindedPeripheralIdentifier: $viewModel.plant.peripheralUUID, alertItemTitle: viewModel.plant.name)
                         }
                         .frame(width: 50)
                     case false:
                         Text("\(viewModel.plant.peripheralUUID == nil  ? "No" : "Yes")")
                     }
                 }
+                
+                if isEdited {
+                    HStack{
+                        Spacer()
+                        Button("Delete plant") {
+                            showingDeletePlantAlert = true
+                        }
+                        .frame(width: 200, height: 50, alignment: .center)
+                        .tint(.red)
+                        .buttonStyle(.bordered)
+                        Spacer()
+                    }
+                    .listRowSeparator(.hidden)
+                }
+                   
             }
             .listStyle(.plain)
+         
+           
             
+           
+  
         }
         
         .simultaneousGesture(DragGesture().onChanged(){_ in
@@ -188,9 +208,9 @@ struct PlantView: View {
             Button("Save") {
                 viewModel.savePlant { success, message in
                     if success {
-                        withAnimation {
+                       // withAnimation {
                             isEdited = false
-                        }
+                       // }
                     } else {
                         showingSaveErrorAlert = true
                         viewModel.cancelChanges()
@@ -203,25 +223,30 @@ struct PlantView: View {
             }
         }
         
-        
+        .alert("Are you sure you want delete this plant?", isPresented: $showingDeletePlantAlert) {
+            Button("Yes") {
+                viewModel.deletePlant() { success, error in
+                    dismiss()
+                }
+            }
+            Button("Cancel", role: .cancel) {
+                viewModel.cancelChanges()
+                isEdited = false
+            }
+        }
         
         .toolbar{
             Button {
                 switch isEdited {
                 case true:
-                    withAnimation {
-                        if viewModel.hasChanges() {
-                            showingSaveOrCancelAlert = true
-                        } else {
-                            isEdited = false
-                        }
-                       
+                    if viewModel.plantHasChanges() {
+                        showingSaveOrCancelAlert = true
+                    } else {
+                        isEdited = false
                     }
-    
+                    
                 case false:
-                    withAnimation {
-                        isEdited = true
-                    }
+                    isEdited = true
                 }
                 
             } label: {
@@ -240,12 +265,11 @@ struct PlantView: View {
 }
 
 struct PlantView_Previews: PreviewProvider {
-    static let context = PersistenceController.previewPlant.container.viewContext
+    static let moc = PersistenceController.previewPlant.container.viewContext
     
     static var previews: some View {
         NavigationStack {
-            PlantView(plant: previewPlant)
-                .environment(\.managedObjectContext, context)
+            PlantView(viewModel: PlantViewModel(plant: previewPlant, moc: moc))
         }
     }
 }

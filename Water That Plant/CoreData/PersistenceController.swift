@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreData
+import UIKit
 
 class PersistenceController: ObservableObject {
     // A singleton for our entire app to use
@@ -22,8 +23,18 @@ class PersistenceController: ObservableObject {
         // Create 10 example
         for _ in 0..<10 {
             let plant = Plant(context: controller.container.viewContext)
-            plant.name = "Example Plant"
-            plant.isFavourite = Bool.random()
+            plant.name = "Plant"
+            
+            if let image = UIImage(named: "fikus"){
+                plant.image = image
+            }
+           
+            plant.selectedRoom = .bathroom
+            plant.currentSoilHumidity = 21.37
+            plant.currentLighting = 2
+            plant.currentFertilizer = 79
+            plant.recommendedLightingRawValue = 30
+            plant.recommendedTemperature = 22
         }
         
         return controller
@@ -33,8 +44,18 @@ class PersistenceController: ObservableObject {
         let controller = PersistenceController(inMemory: true)
       
         let plant = Plant(context: controller.container.viewContext)
-        plant.name = "Example Plant"
-        plant.isFavourite = Bool.random()
+        plant.name = "Plant"
+        
+        if let image = UIImage(named: "fikus"){
+            plant.image = image
+        }
+       
+        plant.selectedRoom = .bathroom
+        plant.currentSoilHumidity = 21.37
+        plant.currentLighting = 2
+        plant.currentFertilizer = 79
+        plant.recommendedLightingRawValue = 30
+        plant.recommendedTemperature = 22
         
         
         return controller

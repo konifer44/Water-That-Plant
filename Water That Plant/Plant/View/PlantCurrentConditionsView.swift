@@ -53,13 +53,3 @@ struct PlantCurrentConditionsView_Previews: PreviewProvider {
 }
 
 
-var previewPlant: Plant = {
-    let context = PersistenceController.previewPlant.container.viewContext
-    var plant = Plant(context: context)
-    plant.name = "Plant"
-    plant.selectedRoom = .bathroom
-    plant.currentSoilHumidity = 21.37
-    plant.currentLighting = 2
-    plant.currentFertilizer = 79
-    return plant
-}()
