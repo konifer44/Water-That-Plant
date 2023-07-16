@@ -19,11 +19,13 @@ class PersistenceController: ObservableObject {
     // A test configuration for SwiftUI previews
     static var previewList: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
+        let names = ["Fikus", "Kaktus", "Paproć", "Strelicja", "Bananowiec", "Monstera", "Storczyk"]
         
         // Create 10 example
         for _ in 0..<10 {
             let plant = Plant(context: controller.container.viewContext)
-            plant.name = "Plant"
+            
+            plant.name = names.randomElement()!
             
             if let image = UIImage(named: "fikus"){
                 plant.image = image

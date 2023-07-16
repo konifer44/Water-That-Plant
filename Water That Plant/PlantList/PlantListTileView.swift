@@ -15,12 +15,13 @@ struct PlantListTileView: View {
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .cornerRadius(25)
-                .padding(15)
+                .padding(10)
                 
             VStack(alignment: .leading){
                 Text(plant.name)
                     .font(.title2)
                     .bold()
+                    .foregroundColor(.oliveGreen)
                 Text("This plant need water (150ml)")
                     .font(.caption)
                     .foregroundColor(.gray)

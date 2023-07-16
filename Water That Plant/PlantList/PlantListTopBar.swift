@@ -5,55 +5,71 @@
 //  Created by Jan Konieczny on 06.07.23.
 //
 
-//
-//  MainTopBar.swift
-//  WaterThatPlant
-//
-//  Created by Jan Konieczny on 27.07.22.
-//
-
 import SwiftUI
+import UIKit
 
 struct PlantListTopBar: View {
     var action: () -> Void
-    let blurredBackgroundHeight: CGFloat
+    let blurStyle: UIBlurEffect.Style
     
     var body: some View {
         
-        VStack{
-            Spacer()
-            
-            HStack{
-                VStack(alignment: .leading){
-                    Text("Hi Jan!")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                    Text("Browse trough your plants")
+        GeometryReader { geometry in
+            ZStack {
+                VStack{
+                    Spacer()
+                    HStack{
+                        VStack(alignment: .leading){
+                            Text("Hi Jan!")
+                                .font(.largeTitle)
+                                .fontWeight(.bold)
+                            Text("Browse trough your plants")
+                        }
+                        .foregroundColor(.white)
+                        .padding(30)
+                        
+                        Spacer()
+                        Button {
+                            action()
+                        } label: {
+                            Image(systemName: "plus.square.fill")
+                                .foregroundStyle(Color.oliveGreen, .yellow)
+                                .font(.system(size: 50))
+                        }
+                        .shadow(radius: 10)
+                        .padding(30)
+                    }
+                    .padding(.bottom, 30)
+                    Spacer()
                 }
-                .foregroundColor(.white)
-                .padding(30)
-                
-                Spacer()
-                Button {
-                    action()
-                } label: {
-                    Image(systemName: "plus.square.fill")
-                        .foregroundStyle(Color.oliveGreen, .yellow)
-                        .font(.system(size: 50))
-                }
-                .padding(30)
+                .background(
+                    VStack {
+                        Rectangle()
+                            .fill(Color.oliveGreenGradient)
+                            .background(Color.white)
+                            .cornerRadius(90, corners: .bottomLeft)
+                        
+                        
+                        HStack {
+                            Label("Your plants", systemImage: "leaf")
+                                .padding(.leading, 20)
+                            Spacer()
+                            Image(systemName: "line.3.horizontal.decrease.circle")
+                                .padding(.trailing, 20)
+                        }
+                        .font(.title3)
+                        .foregroundColor(.oliveGreen)
+                        
+                        
+                    }
+                        .background(.clear)
+                        .edgesIgnoringSafeArea(.all)
+                )
             }
+            .background(BlurView(style: blurStyle))
             
-            Spacer()
         }
-        .background(
-            Rectangle()
-                .fill(Color.oliveGreenGradient)
-                .background(Color.white)
-                .cornerRadius(90, corners: .bottomLeft)
-                .edgesIgnoringSafeArea(.all)
-        )
-        .background(BlurView(style: .regular))
+        
     }
 }
 
@@ -61,8 +77,11 @@ struct PlantListTopBar: View {
 struct PlantListTopBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            PlantListTopBar(action: { }, blurredBackgroundHeight: 100)
-                .frame(height: geo.size.height / 4)
+            VStack(spacing: 0) {
+                PlantListTopBar(action: { }, blurStyle: .light)
+                    .frame(height: geo.size.height / 3)
+                Divider()
+            }
         }
         
     }
@@ -73,7 +92,6 @@ struct PlantListTopBar_Previews: PreviewProvider {
 struct BlurView : UIViewRepresentable {
     
     var style : UIBlurEffect.Style
-    
     func makeUIView(context: Context) -> UIVisualEffectView {
         
         let view = UIVisualEffectView(effect: UIBlurEffect(style: style))

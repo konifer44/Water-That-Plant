@@ -150,6 +150,7 @@
 		F947E2C52A2B32A900DD91DD /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				F9B8AEA92A63E6B000D4BD8B /* PreviewPlant.swift */,
 				F947E2D62A2BB82F00DD91DD /* PersistenceController.swift */,
 				F947E2D82A2D073C00DD91DD /* CDPlant+Extension.swift */,
 				F947E2C02A2B32A100DD91DD /* Plant.xcdatamodeld */,
@@ -202,7 +203,6 @@
 				F9B8AEA52A609E9900D4BD8B /* CircleIndicator.swift */,
 				F9B8AEA72A609EE600D4BD8B /* PlantStatistics.swift */,
 				F9A780462A3DE64900F6E3AA /* PlantListViewModel.swift */,
-				F9B8AEA92A63E6B000D4BD8B /* PreviewPlant.swift */,
 			);
 			path = PlantList;
 			sourceTree = "<group>";
