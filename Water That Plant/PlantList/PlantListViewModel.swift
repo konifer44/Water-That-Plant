@@ -6,10 +6,28 @@
 //
 
 import Foundation
-
 import SwiftUI
-
 import CoreData
+
+enum SortDescriptors: String, CaseIterable {
+    var id: Self { self }
+    
+    case name = "Name"
+    case date = "Date"
+    case room = "Room"
+    
+    
+    func descriptor() -> SortDescriptor<Plant> {
+        switch self {
+        case .name:
+            return SortDescriptor(\.nameRawValue, order: .forward)
+        case .date:
+            return SortDescriptor(\.dateOfBuyRawValue, order: .forward)
+        case .room:
+            return SortDescriptor(\.selectedRoomRawValue, order: .forward)
+        }
+    }
+}
 
 class PlantListViewModel: ObservableObject {
     let moc: NSManagedObjectContext
@@ -17,6 +35,10 @@ class PlantListViewModel: ObservableObject {
     
     init(moc: NSManagedObjectContext) {
         self.moc = moc
+    }
+    
+    func sortAction(){
+        
     }
     
     func addNewPlant(){

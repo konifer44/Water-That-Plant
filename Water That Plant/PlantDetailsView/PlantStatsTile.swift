@@ -8,8 +8,10 @@
 import SwiftUI
 
 
-struct PlantFertilizerTile: View {
-    @Binding var plant: Plant
+struct PlantStatsTile: View {
+    @State var plant: Plant
+    let title: String
+    let color: Color
     
     var body: some View {
         ZStack(alignment: .leading) {
@@ -18,10 +20,10 @@ struct PlantFertilizerTile: View {
                     Image(systemName: "drop")
                         .foregroundStyle(Color.brownOliveGreenGradient)
                         .font(.title2)
-                    Text("Fertilizer")
+                    Text(title)
                         .font(.title2)
                 }
-                Text("Last fertilization: 3 days ago")
+                Text("Last dose: 3 days ago")
                     .font(.caption)
                     .foregroundColor(.gray)
             }
@@ -32,17 +34,17 @@ struct PlantFertilizerTile: View {
             .padding(.trailing, 100)
             
             
-            CircleIndicator(progress: .constant(11.0), color: .brown)
-                .frame(maxWidth: 130)
+            CircleIndicator(progress: .constant(11.0), color: color)
+                .frame(maxWidth: 120)
         }
     }
 }
 
-struct PlantFertilizer_Previews: PreviewProvider {
+struct PlantStatsTile_Previews: PreviewProvider {
     @State static var plant = previewPlant
     
     static var previews: some View {
-        PlantFertilizerTile(plant: $plant)
+        PlantStatsTile(plant: plant, title: "Fertilizer", color: .brown)
     }
 }
 

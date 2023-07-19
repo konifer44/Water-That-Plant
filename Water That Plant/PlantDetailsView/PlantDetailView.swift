@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlantDetailView: View {
-    @Binding var plant: Plant
+    @State var plant: Plant
     var body: some View {
         GeometryReader { geometry in
             ScrollView {
@@ -30,10 +30,10 @@ struct PlantDetailView: View {
                     }
                     .padding()
                     
-                    PlantHydrationTile(plant: $plant)
+                    PlantStatsTile(plant: plant, title: "Hydration", color: .blue)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                     
-                    PlantFertilizerTile(plant: $plant)
+                    PlantStatsTile(plant: plant, title: "Fertilizer", color: .brown)
                         .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                     
                     PlantStatistics()
@@ -52,7 +52,7 @@ struct PlantDetailView_Previews: PreviewProvider {
     @State static var plant = previewPlant
     
     static var previews: some View {
-        PlantDetailView(plant: $plant)
+        PlantDetailView(plant: plant)
     }
 }
 

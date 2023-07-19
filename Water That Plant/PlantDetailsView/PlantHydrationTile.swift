@@ -9,7 +9,7 @@ import SwiftUI
 
 
 struct PlantHydrationTile: View {
-    @Binding var plant: Plant
+    @State var plant: Plant
   
     var body: some View {
         ZStack(alignment: .leading) {
@@ -42,7 +42,7 @@ struct PlantHydrationTile_Previews: PreviewProvider {
     @State static var plant = previewPlant
     
     static var previews: some View {
-        PlantHydrationTile(plant: $plant)
+        PlantHydrationTile(plant: plant)
     }
 }
 

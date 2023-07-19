@@ -4,13 +4,19 @@
 //
 //  Created by Jan Konieczny on 06.07.23.
 //
-
+import CoreData
 import SwiftUI
 import UIKit
 
+
+
+
+
 struct PlantListTopBar: View {
-    var action: () -> Void
-    let blurStyle: UIBlurEffect.Style
+    var addAction: () -> Void
+    var sortAction: () -> Void
+    
+    @Binding var sortDescriptor: SortDescriptors
     
     var body: some View {
         
@@ -30,7 +36,7 @@ struct PlantListTopBar: View {
                         
                         Spacer()
                         Button {
-                            action()
+                            addAction()
                         } label: {
                             Image(systemName: "plus.square.fill")
                                 .foregroundStyle(Color.oliveGreen, .yellow)
@@ -39,11 +45,11 @@ struct PlantListTopBar: View {
                         .shadow(radius: 10)
                         .padding(30)
                     }
-                    .padding(.bottom, 30)
+                    .padding(.bottom, 40)
                     Spacer()
                 }
                 .background(
-                    VStack {
+                    VStack(spacing: 0) {
                         Rectangle()
                             .fill(Color.oliveGreenGradient)
                             .background(Color.white)
@@ -52,36 +58,49 @@ struct PlantListTopBar: View {
                         
                         HStack {
                             Label("Your plants", systemImage: "leaf")
-                                .padding(.leading, 20)
                             Spacer()
-                            Image(systemName: "line.3.horizontal.decrease.circle")
-                                .padding(.trailing, 20)
+                           
+                            Menu {
+                                Text("Sort by:")
+                                Picker("Sort", selection: $sortDescriptor, content: {
+                                   
+                                    ForEach(SortDescriptors.allCases, id: \.self){
+                                        Text($0.rawValue).tag($0)
+                                    }
+                                })
+                            } label: {
+                                Image(systemName: "line.3.horizontal.decrease.circle")
+                            }
                         }
+                        .padding(15)
                         .font(.title3)
                         .foregroundColor(.oliveGreen)
                         
-                        
+                        Divider()
+                            .background(Color.oliveGreen)
                     }
                         .background(.clear)
                         .edgesIgnoringSafeArea(.all)
                 )
             }
-            .background(BlurView(style: blurStyle))
+            .background(BlurView(style: .light))
             
         }
         
     }
+    
 }
+
+
 
 
 struct PlantListTopBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            VStack(spacing: 0) {
-                PlantListTopBar(action: { }, blurStyle: .light)
-                    .frame(height: geo.size.height / 3)
-                Divider()
-            }
+            
+            PlantListTopBar(addAction: {}, sortAction: {}, sortDescriptor: .constant(.name))
+                .frame(height: geo.size.height / 3)
+            
         }
         
     }
