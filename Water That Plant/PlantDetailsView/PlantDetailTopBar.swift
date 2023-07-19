@@ -9,17 +9,14 @@ import SwiftUI
 
 struct DetailTopBar: View {
     @State var plant: Plant
-    var topPadding: CGFloat
+    
     
     var body: some View {
-        GeometryReader { geometry in
-            HStack(alignment: .center) {
-                Image("fikus")
-                    .resizable()
-                    .frame(width: geometry.size.width / 2)
-                    .aspectRatio(1, contentMode: .fill)
-                    .clipped()
-               Spacer()
+        
+        VStack{
+            Spacer()
+            HStack {
+                Spacer()
                 VStack(alignment: .leading, spacing: 15){
                     VStack(alignment: .leading, spacing: 10){
                         Text("Room temp")
@@ -36,6 +33,7 @@ struct DetailTopBar: View {
                         .padding(.leading, 4)
                     }
                     
+                    
                     VStack(alignment: .leading, spacing: 10){
                         Text("Light")
                             .foregroundColor(.gray)
@@ -47,23 +45,59 @@ struct DetailTopBar: View {
                                 .foregroundColor(.gray)
                         }
                     }
-                    Spacer()
+                  
+                    
                 }
+                .padding()
+                .background(Color(uiColor: UIColor.systemGray5))
+                .cornerRadius(20)
+                .padding()
+                
             }
-            
-            .background(
-                Rectangle().fill(Color.grayGradient)
-            )
-            .cornerRadius(90, corners: .bottomLeft)
-            .edgesIgnoringSafeArea(.all)
         }
+        .frame(maxWidth: .infinity)
+        .background(
+            VStack(spacing: 0) {
+                Image("fikus")
+                    .resizable()
+                    .scaledToFill()
+                    .cornerRadius(90, corners: .bottomLeft)
+                
+                
+                HStack {
+                    Label("Your plants", systemImage: "leaf")
+                    Spacer()
+                   
+                    
+                }
+                .padding(15)
+                .font(.title3)
+                .foregroundColor(.oliveGreen)
+                
+                Divider()
+                    .background(Color.oliveGreen)
+            }
+                .background(.clear)
+                .edgesIgnoringSafeArea(.all)
+        )
+   // }
+    //.background(BlurView(style: .light))
+        
+       // .cornerRadius(90, corners: .bottomLeft)
+        .shadow(radius: 10)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
 struct DetailTopBarView_Previews: PreviewProvider {
     
     static var previews: some View {
-        DetailTopBar(plant: previewPlant, topPadding: 40)
-            .frame(height: 100)
+        GeometryReader{ geometry in
+            VStack {
+                DetailTopBar(plant: previewPlant)
+                    .frame(height: geometry.size.height / 3)
+                Spacer()
+            }
+        }
     }
 }

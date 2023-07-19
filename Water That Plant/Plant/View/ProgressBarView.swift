@@ -14,17 +14,18 @@ struct ProgressBar: View {
     var title: String
     var icon: String
     var lineWidth: CGFloat = 10
+    
     var body: some View {
         VStack(spacing: 15){
             GeometryReader { geometry in
                 ZStack {
                     Circle()
-                        .stroke(lineWidth: lineWidth)
-                        .opacity(0.3)
-                        .foregroundColor(color)
+                        .fill(Color.white)
+                        .padding(-(lineWidth/2) - 3)
+                      
                     
                     Circle()
-                        .trim(from: 0.0, to: CGFloat(min(progress / 100, 1.0)))
+                        .trim(from: 0, to: CGFloat(min(progress / 100, 1.0)))
                         .stroke(style: StrokeStyle(lineWidth: lineWidth - 1, lineCap: .round, lineJoin: .round))
                         .foregroundColor(color.opacity(0.5))
                         .rotationEffect(Angle(degrees: 90))
@@ -63,7 +64,7 @@ struct ProgressBar: View {
 struct ProgressBar_Previews: PreviewProvider {
     static let context = PersistenceController.previewPlant.container.viewContext
     static var previews: some View {
-        ProgressBar(progress: 21.2, color: .blue, title: "Preview", icon: "cloud")
+        ProgressBar(progress: 90.0, color: .blue, title: "Preview", icon: "cloud")
             .environment(\.managedObjectContext, context)
             .previewLayout(.sizeThatFits)
             //.padding()

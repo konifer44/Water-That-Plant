@@ -28,14 +28,9 @@ struct PlantListView: View {
     private let plantListTileHeight: CGFloat = 100
     private let plantTileHeight: CGFloat = 150
     
-    func sort(){
-        plants.sortDescriptors = [sortDescriptor.descriptor()]
-    }
-    
-    
+  
     init(viewModel: PlantListViewModel){
         self.viewModel = viewModel
-       
     }
     
     
@@ -49,9 +44,7 @@ struct PlantListView: View {
                                 PlantListTileView(plant: plant)
                                     .frame(height: plantListTileHeight)
                                     .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                                    .onTapGesture {}.onLongPressGesture(minimumDuration: 0.1) {
-                                        longTapped(plant: plant)
-                                    }
+                                   
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
@@ -90,7 +83,10 @@ struct PlantListView: View {
         longPressedPlant = plant
         presentingAddPlantView = true
     }
-   
+    
+    private func sort(){
+        plants.sortDescriptors = [sortDescriptor.descriptor()]
+    }
 }
 
 struct PlantListView_Previews: PreviewProvider {

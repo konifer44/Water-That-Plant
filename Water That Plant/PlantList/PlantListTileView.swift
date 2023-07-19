@@ -21,7 +21,7 @@ struct PlantListTileView: View {
                 Text(plant.name)
                     .font(.title2)
                     .bold()
-                    .foregroundColor(.oliveGreen)
+                   // .foregroundColor(.oliveGreen)
                 Text("This plant need water (150ml)")
                     .font(.caption)
                     .foregroundColor(.gray)

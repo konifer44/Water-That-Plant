@@ -11,14 +11,24 @@ import SwiftUI
 struct PlantStatsTile: View {
     @State var plant: Plant
     let title: String
-    let color: Color
+    let progresBarColor: Color
+    let iconColor: Color
+    
+    init(plant: Plant, type: PlantStatsTileType) {
+        self.plant = plant
+        
+        let model = PlantStatsTileModel(type: type)
+        self.title = model.title
+        self.progresBarColor = model.progresBarColor
+        self.iconColor = model.iconColor
+    }
     
     var body: some View {
         ZStack(alignment: .leading) {
             VStack(alignment: .leading){
                 HStack {
                     Image(systemName: "drop")
-                        .foregroundStyle(Color.brownOliveGreenGradient)
+                        .foregroundStyle(iconColor)
                         .font(.title2)
                     Text(title)
                         .font(.title2)
@@ -34,17 +44,16 @@ struct PlantStatsTile: View {
             .padding(.trailing, 100)
             
             
-            CircleIndicator(progress: .constant(11.0), color: color)
-                .frame(maxWidth: 120)
+            ProgressBar(progress: 90.0, color: progresBarColor, title: "", icon: "")
+                .frame(maxWidth: 115)
         }
     }
 }
 
 struct PlantStatsTile_Previews: PreviewProvider {
-    @State static var plant = previewPlant
-    
     static var previews: some View {
-        PlantStatsTile(plant: plant, title: "Fertilizer", color: .brown)
+        PlantStatsTile(plant: previewPlant, type: .hydration)
+        PlantStatsTile(plant: previewPlant, type: .fertilizer)
     }
 }
 
