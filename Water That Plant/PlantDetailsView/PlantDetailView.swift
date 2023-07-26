@@ -10,24 +10,16 @@ import SwiftUI
 
 struct PlantDetailView: View {
     @State var plant: Plant
+    private let topBarHeight: CGFloat = 330
+    
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                DetailTopBar(plant: plant)
-                    .frame(height: 330)//geometry.size.height / 3)
-               
+            VStack(spacing: 0){
+                PlantDetail(plant: plant, height: geometry.size.height / 2.5)
+                  
                 ScrollView {
                     VStack(alignment: .leading){
-                        HStack{
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.oliveGreen)
-                                .font(.title2)
-                            Text("Plant overview")
-                                .font(.title3)
-                            Spacer()
-                        }
-                        .padding()
-                        
+                        Spacer(minLength: 30)
                         PlantStatsTile(plant: plant, type: .hydration)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                         
@@ -35,15 +27,14 @@ struct PlantDetailView: View {
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                         
                         PlantStatistics()
-                            .frame(height: geometry.size.height / 3)
+                        //.frame(height: geometry.size.height / 3)
                             .padding()
                     }
                 }
-                .edgesIgnoringSafeArea(.top)
-                //.navigationTitle("\(plant.name) in the \(plant.room)")
-            .navigationBarTitleDisplayMode(.inline)
+                
             }
         }
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
