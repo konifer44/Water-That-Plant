@@ -14,7 +14,7 @@ class BLEManager: NSObject,  ObservableObject{
     @Published var peripheralList: [CBPeripheral] = [] 
      
     private var centralManager: CBCentralManager!
-    
+    var connectedPeripheral: CBPeripheral?
     
     static let shared = BLEManager()
     
@@ -50,7 +50,13 @@ class BLEManager: NSObject,  ObservableObject{
     
     func connectToPeripheral(with identifier: UUID){
         if let peripheral = centralManager.retrievePeripherals(withIdentifiers: [identifier]).first {
-            centralManager.connect(peripheral)
+            connectedPeripheral = peripheral
+            if let connectedPeripheral {
+                centralManager.connect(connectedPeripheral)
+            }
+           
+        } else {
+            print("Could not find peripheral")
         }
     }
     
@@ -131,6 +137,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
+        peripheral.delegate = self
         peripheral.discoverServices(nil)
     }
     
@@ -143,11 +150,16 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?) {
+        if let char = service.characteristics?.first {
+           // peripheral.readValue(for: char)
+            peripheral.setNotifyValue(true, for: char)
+        }
         
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
         guard let data = characteristic.value else { return }
+        print(data)
     }
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
