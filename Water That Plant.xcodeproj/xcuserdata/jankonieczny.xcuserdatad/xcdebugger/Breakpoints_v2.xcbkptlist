@@ -82,6 +82,38 @@
             endingLineNumber = "65"
             landmarkName = "isConnected(uuid:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9C8B6F9E-ADD5-4A54-9182-D52D78A5E45D - c9f5a8280827ac4d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Water_That_Plant.BLEManager.isConnected(uuid: Foundation.UUID) -&gt; Swift.Bool"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/Managers/BLEManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "66"
+                  endingLineNumber = "66"
+                  offsetFromSymbolStart = "80">
+               </Location>
+               <Location
+                  uuid = "9C8B6F9E-ADD5-4A54-9182-D52D78A5E45D - dbac59a05073c0d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Water_That_Plant.BLEManager.disconnectFromPeripheral(peripheral: __C.CBPeripheral) -&gt; ()"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/Managers/BLEManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "228">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -98,6 +130,38 @@
             endingLineNumber = "134"
             landmarkName = "centralManager(_:didConnect:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "8B4A2EFA-8359-42CA-991B-E36FCEE74BB2 - b6611c0a3719d29a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Water_That_Plant.BLEManager.centralManager(_: __C.CBCentralManager, didConnect: __C.CBPeripheral) -&gt; ()"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/Managers/BLEManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  uuid = "8B4A2EFA-8359-42CA-991B-E36FCEE74BB2 - d6c245f16516c376"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Water_That_Plant.BLEManager.centralManager(_: __C.CBCentralManager, didDiscover: __C.CBPeripheral, advertisementData: Swift.Dictionary&lt;Swift.String, Any&gt;, rssi: __C.NSNumber) -&gt; ()"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/Managers/BLEManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "60">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

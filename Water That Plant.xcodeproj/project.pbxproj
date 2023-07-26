@@ -10,7 +10,6 @@
 		89B2E1EE2A68376100D01D18 /* PlantStatsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89B2E1ED2A68376100D01D18 /* PlantStatsModel.swift */; };
 		F946FA8C2A5CA6C00016C794 /* PlantStatsTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946FA862A5CA6BF0016C794 /* PlantStatsTile.swift */; };
 		F946FA8E2A5CA6C00016C794 /* PlantDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946FA882A5CA6BF0016C794 /* PlantDetailView.swift */; };
-		F946FA902A5CA6C00016C794 /* PlantDetailTopBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946FA8A2A5CA6C00016C794 /* PlantDetailTopBar.swift */; };
 		F946FA942A5CA7110016C794 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946FA932A5CA7110016C794 /* ViewExtension.swift */; };
 		F946FA962A5CA7560016C794 /* DoubleExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F946FA952A5CA7560016C794 /* DoubleExtension.swift */; };
 		F947E2B32A2B321400DD91DD /* Water_That_PlantApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2B22A2B321400DD91DD /* Water_That_PlantApp.swift */; };
@@ -47,7 +46,6 @@
 		89B2E1ED2A68376100D01D18 /* PlantStatsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantStatsModel.swift; sourceTree = "<group>"; };
 		F946FA862A5CA6BF0016C794 /* PlantStatsTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantStatsTile.swift; sourceTree = "<group>"; };
 		F946FA882A5CA6BF0016C794 /* PlantDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantDetailView.swift; sourceTree = "<group>"; };
-		F946FA8A2A5CA6C00016C794 /* PlantDetailTopBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantDetailTopBar.swift; sourceTree = "<group>"; };
 		F946FA932A5CA7110016C794 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		F946FA952A5CA7560016C794 /* DoubleExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleExtension.swift; sourceTree = "<group>"; };
 		F947E2AF2A2B321400DD91DD /* Water That Plant.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Water That Plant.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +102,6 @@
 		F946FA922A5CA6C50016C794 /* PlantDetailsView */ = {
 			isa = PBXGroup;
 			children = (
-				F946FA8A2A5CA6C00016C794 /* PlantDetailTopBar.swift */,
 				F98872B62A6F1AD9002E9484 /* PlantDetail.swift */,
 				F946FA882A5CA6BF0016C794 /* PlantDetailView.swift */,
 				F9B8AEA72A609EE600D4BD8B /* PlantStatistics.swift */,
@@ -338,7 +335,6 @@
 				F9A780452A3A59B600F6E3AA /* PlantViewModel.swift in Sources */,
 				F9A780472A3DE64900F6E3AA /* PlantListViewModel.swift in Sources */,
 				F9A780C82A57203800F6E3AA /* PlantListTopBar.swift in Sources */,
-				F946FA902A5CA6C00016C794 /* PlantDetailTopBar.swift in Sources */,
 				F9A7804C2A3DE93300F6E3AA /* PlantErrorType.swift in Sources */,
 				F947E2B32A2B321400DD91DD /* Water_That_PlantApp.swift in Sources */,
 				F947E2CF2A2B38D000DD91DD /* SensorModel.swift in Sources */,

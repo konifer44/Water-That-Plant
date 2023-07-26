@@ -15,15 +15,24 @@ struct PlantDetailView: View {
     var body: some View {
         GeometryReader { geometry in
             VStack(spacing: 0){
-                PlantDetail(plant: plant, height: geometry.size.height / 2.5)
-                  
+                PlantDetailTopBar(plant: plant, height: geometry.size.height / 2.5)
+                    .frame(height: geometry.size.height / 2.5)
                 ScrollView {
                     VStack(alignment: .leading){
-                        Spacer(minLength: 30)
+                        Spacer(minLength: 20)
+                        HStack{
+                            Image(systemName: "chart.bar.xaxis")
+                                .foregroundColor(.oliveGreen)
+                                .font(.title2)
+                            Text("Plant stats")
+                                .font(.title3)
+                            Spacer()
+                        }
+                        .padding()
                         PlantStatsTile(plant: plant, type: .hydration)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                         
-                        PlantStatsTile(plant: plant, type: .hydration)
+                        PlantStatsTile(plant: plant, type: .fertilizer)
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                         
                         PlantStatistics()

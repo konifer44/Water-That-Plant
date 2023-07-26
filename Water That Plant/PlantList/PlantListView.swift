@@ -21,9 +21,7 @@ struct PlantListView: View {
     
     @State var sortDescriptor: SortDescriptors = .name
     @State var presentingAddPlantView: Bool = false
-   
-    @State var longPressedPlant: Plant?
-    
+  
     private let plantListTopBarHeight: CGFloat = 330
     private let plantListTileHeight: CGFloat = 100
     private let plantTileHeight: CGFloat = 150
@@ -55,7 +53,7 @@ struct PlantListView: View {
                 
                 
                 
-                PlantListTopBar(addAction: viewModel.addNewPlant, sortAction: viewModel.sortAction, sortDescriptor: $sortDescriptor)
+                PlantListTopBar(addPlant: $presentingAddPlantView, sortAction: viewModel.sortAction, sortDescriptor: $sortDescriptor)
                     .frame(height: plantListTopBarHeight)
                 
             }
@@ -71,17 +69,8 @@ struct PlantListView: View {
         }
         
         .sheet(isPresented: $presentingAddPlantView) {
-            if let longPressedPlant {
-                AddPlantView(viewModel: AddPlantViewModel(moc: moc, plant: longPressedPlant))
-            }
+            AddPlantView(viewModel: AddPlantViewModel(moc: moc))
         }
-    }
-    
-    func longTapped(plant: Plant) {
-        let generator = UIImpactFeedbackGenerator(style: .heavy)
-        generator.impactOccurred()
-        longPressedPlant = plant
-        presentingAddPlantView = true
     }
     
     private func sort(){

@@ -7,14 +7,14 @@
 
 import SwiftUI
 
-struct PlantDetail: View {
+struct PlantDetailTopBar: View {
     @State var plant: Plant
     @State var height: CGFloat
     
     let gradient = LinearGradient(
             gradient: Gradient(stops: [
-                .init(color: .gray, location: 0),
-                .init(color: .clear, location: 0.8)
+                .init(color: .white, location: 0),
+                .init(color: .clear, location: 0.9)
             ]),
             startPoint: .bottom,
             endPoint: .top
@@ -23,31 +23,32 @@ struct PlantDetail: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack(alignment: .bottom) {
-                Image("fikus")
+                Image(uiImage: plant.image)
                     .resizable()
-                    
-                    //.aspectRatio(contentMode: .fill)
                     .scaledToFill()
                     .frame(width: geometry.size.width, height: height)
                     .clipped()
                 
                 
                 Rectangle()
-                    .fill(.gray)
+                    .fill(.white)
                     .frame(height: height / 2)
                     .mask(gradient) /// mask the blurred image using the gradient's alpha values
-                
+            
              
                 
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
-                        Text("Classroom of the Elite")
-                            .font(.title2)
+                        Text(plant.name)
+                            .font(.title)
                             .bold()
+                            .foregroundColor(.oliveGreen)
                         Text("Horikita best girl")
                             .font(.headline)
                             .bold()
+                            .foregroundColor(Color(uiColor: .systemGray2))
                     }
+                    
                     
                     .padding()
                    
@@ -69,7 +70,7 @@ struct PlantDetail: View {
 struct PlantDetail_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            PlantDetail(plant: previewPlant, height: geo.size.height / 2.5)
+            PlantDetailTopBar(plant: previewPlant, height: geo.size.height / 2.5)
                 
         }
     }

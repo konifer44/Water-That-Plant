@@ -13,7 +13,7 @@ import UIKit
 
 
 struct PlantListTopBar: View {
-    var addAction: () -> Void
+    @Binding var addPlant: Bool
     var sortAction: () -> Void
     
     @Binding var sortDescriptor: SortDescriptors
@@ -36,7 +36,7 @@ struct PlantListTopBar: View {
                         
                         Spacer()
                         Button {
-                            addAction()
+                            addPlant = true
                         } label: {
                             Image(systemName: "plus.square.fill")
                                 .foregroundStyle(Color.oliveGreen, .yellow)
@@ -98,7 +98,7 @@ struct PlantListTopBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
             
-            PlantListTopBar(addAction: {}, sortAction: {}, sortDescriptor: .constant(.name))
+            PlantListTopBar(addPlant: .constant(false), sortAction: {}, sortDescriptor: .constant(.name))
                 .frame(height: geo.size.height / 3)
             
         }
