@@ -10,8 +10,8 @@ import CoreData
 import UIKit
 var previewPlant: Plant = {
     let names = ["Fikus", "Kaktus", "Paproć", "Strelicja", "Bananowiec", "Monstera", "Storczyk"]
-    let context = PersistenceController.previewPlant.container.viewContext
-    var plant = Plant(context: context)
+   
+    var plant = Plant(context: CoreDataManager.shared.viewContext)
     plant.name = names.randomElement()!
     
     if let image = UIImage(named: "fikus"){

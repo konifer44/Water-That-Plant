@@ -265,11 +265,9 @@ struct PlantView: View {
 }
 
 struct PlantView_Previews: PreviewProvider {
-    static let moc = PersistenceController.previewPlant.container.viewContext
-    
     static var previews: some View {
         NavigationStack {
-            PlantView(viewModel: PlantViewModel(plant: previewPlant, moc: moc))
+            PlantView(viewModel: PlantViewModel(plant: previewPlant))
         }
     }
 }

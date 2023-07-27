@@ -44,11 +44,10 @@ struct PlantCurrentConditionsView: View {
 
 
 struct PlantCurrentConditionsView_Previews: PreviewProvider {
-    static let context = PersistenceController.previewPlant.container.viewContext
     static var previews: some View {
        
         PlantCurrentConditionsView(plant: previewPlant)
-            .environment(\.managedObjectContext, context)
+            .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
     }
 }
 

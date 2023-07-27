@@ -8,10 +8,6 @@ import CoreData
 import SwiftUI
 import UIKit
 
-
-
-
-
 struct PlantListTopBar: View {
     @Binding var addPlant: Bool
     var sortAction: () -> Void
@@ -19,7 +15,6 @@ struct PlantListTopBar: View {
     @Binding var sortDescriptor: SortDescriptors
     
     var body: some View {
-        
         GeometryReader { geometry in
             ZStack {
                 VStack{

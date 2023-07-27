@@ -9,12 +9,11 @@ import SwiftUI
 
 @main
 struct Water_That_PlantApp: App {
-    @StateObject private var persistenceController = PersistenceController()
-
     var body: some Scene {
         WindowGroup {
-            PlantListView(viewModel: PlantListViewModel(moc: persistenceController.container.viewContext))
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            let viewContext = CoreDataManager.shared.viewContext
+            PlantListView(viewModel: PlantListViewModel(viewContext: viewContext))
+                .environment(\.managedObjectContext, viewContext)
         }
     }
 }

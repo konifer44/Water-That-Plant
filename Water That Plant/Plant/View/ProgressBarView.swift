@@ -11,8 +11,8 @@ import SwiftUI
 struct ProgressBar: View {
     @State var progress: Double
     var color: Color
-    var title: String
-    var icon: String
+    var title: String = ""
+    var icon: String = ""
     var lineWidth: CGFloat = 10
     
     var body: some View {
@@ -22,7 +22,11 @@ struct ProgressBar: View {
                     Circle()
                         .fill(Color.white)
                         .padding(-(lineWidth/2) - 3)
-                      
+                   
+                    Circle()
+                        .stroke(style: StrokeStyle(lineWidth: lineWidth - 1, lineCap: .round, lineJoin: .round))
+                        .foregroundColor(.gray.opacity(0.1))
+                        .rotationEffect(Angle(degrees: 90))
                     
                     Circle()
                         .trim(from: 0, to: CGFloat(min(progress / 100, 1.0)))
@@ -62,10 +66,9 @@ struct ProgressBar: View {
 }
 
 struct ProgressBar_Previews: PreviewProvider {
-    static let context = PersistenceController.previewPlant.container.viewContext
     static var previews: some View {
         ProgressBar(progress: 90.0, color: .blue, title: "Preview", icon: "cloud")
-            .environment(\.managedObjectContext, context)
+            .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
             .previewLayout(.sizeThatFits)
             //.padding()
     }

@@ -28,7 +28,8 @@
 		F947E2DE2A2D0C3300DD91DD /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2DD2A2D0C3300DD91DD /* ProgressBarView.swift */; };
 		F947E2EC2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F947E2EB2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift */; };
 		F98872B72A6F1AD9002E9484 /* PlantDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98872B62A6F1AD9002E9484 /* PlantDetail.swift */; };
-		F98FACA62A643C5100BA1DD6 /* AddNewPlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FACA52A643C5100BA1DD6 /* AddNewPlant.swift */; };
+		F98872BA2A72D08A002E9484 /* AddPlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98872B92A72D08A002E9484 /* AddPlantViewModel.swift */; };
+		F98FACA62A643C5100BA1DD6 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */; };
 		F996D48A2A5F170A00FF0DEF /* PlantTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996D4892A5F170A00FF0DEF /* PlantTile.swift */; };
 		F996D48C2A5F174600FF0DEF /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996D48B2A5F174600FF0DEF /* DataExtension.swift */; };
 		F9A780452A3A59B600F6E3AA /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9A780442A3A59B600F6E3AA /* PlantViewModel.swift */; };
@@ -65,7 +66,8 @@
 		F947E2DD2A2D0C3300DD91DD /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		F947E2EB2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldClearButtonModifier.swift; sourceTree = "<group>"; };
 		F98872B62A6F1AD9002E9484 /* PlantDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantDetail.swift; sourceTree = "<group>"; };
-		F98FACA52A643C5100BA1DD6 /* AddNewPlant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewPlant.swift; sourceTree = "<group>"; };
+		F98872B92A72D08A002E9484 /* AddPlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantViewModel.swift; sourceTree = "<group>"; };
+		F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		F996D4892A5F170A00FF0DEF /* PlantTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTile.swift; sourceTree = "<group>"; };
 		F996D48B2A5F174600FF0DEF /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
 		F9A780442A3A59B600F6E3AA /* PlantViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				F947E2B22A2B321400DD91DD /* Water_That_PlantApp.swift */,
 				F9A780482A3DE64F00F6E3AA /* PlantList */,
+				F98872B82A72D054002E9484 /* AddPlant */,
 				F946FA922A5CA6C50016C794 /* PlantDetailsView */,
 				F947E2DC2A2D0C1200DD91DD /* Plant */,
 				F947E2D02A2B38DA00DD91DD /* SensorList */,
@@ -199,12 +202,20 @@
 			path = SupportFiles;
 			sourceTree = "<group>";
 		};
+		F98872B82A72D054002E9484 /* AddPlant */ = {
+			isa = PBXGroup;
+			children = (
+				F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */,
+				F98872B92A72D08A002E9484 /* AddPlantViewModel.swift */,
+			);
+			path = AddPlant;
+			sourceTree = "<group>";
+		};
 		F9A780482A3DE64F00F6E3AA /* PlantList */ = {
 			isa = PBXGroup;
 			children = (
 				F947E2B42A2B321400DD91DD /* PlantListView.swift */,
 				F9A780C72A57203800F6E3AA /* PlantListTopBar.swift */,
-				F98FACA52A643C5100BA1DD6 /* AddNewPlant.swift */,
 				F996D4892A5F170A00FF0DEF /* PlantTile.swift */,
 				F9A7806C2A4232EB00F6E3AA /* PlantListTileView.swift */,
 				F9A780462A3DE64900F6E3AA /* PlantListViewModel.swift */,
@@ -312,12 +323,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F98FACA62A643C5100BA1DD6 /* AddNewPlant.swift in Sources */,
+				F98FACA62A643C5100BA1DD6 /* AddPlantView.swift in Sources */,
 				F9A7806D2A4232EB00F6E3AA /* PlantListTileView.swift in Sources */,
 				F947E2EC2A31FB4C00DD91DD /* TextFieldClearButtonModifier.swift in Sources */,
 				F947E2B52A2B321400DD91DD /* PlantListView.swift in Sources */,
 				F946FA962A5CA7560016C794 /* DoubleExtension.swift in Sources */,
 				F9B8AEA82A609EE600D4BD8B /* PlantStatistics.swift in Sources */,
+				F98872BA2A72D08A002E9484 /* AddPlantViewModel.swift in Sources */,
 				F947E2DE2A2D0C3300DD91DD /* ProgressBarView.swift in Sources */,
 				F947E2CD2A2B38D000DD91DD /* SensorsListViewModel.swift in Sources */,
 				F946FA8C2A5CA6C00016C794 /* PlantStatsTile.swift in Sources */,

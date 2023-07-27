@@ -14,5 +14,10 @@ extension Color {
     static let brownOliveGreenGradient = LinearGradient(colors: [.brown, Color("flora")], startPoint: .bottomLeading, endPoint: .topTrailing)
     static let blueOliveGreenGradient = LinearGradient(colors: [.blue, Color.oliveGreen], startPoint: .bottomLeading, endPoint: .topTrailing)
     static let oliveGreen = Color(red: 50/255, green: 168/255, blue: 117/255, opacity: 100)
+    
     static let oliveGreenBright = Color(red: 118/255, green: 204/255, blue: 167/255, opacity: 100)
+}
+
+extension UIColor {
+    static let oliveGreen = UIColor(red: 50/255, green: 168/255, blue: 117/255, alpha: 1)
 }

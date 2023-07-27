@@ -10,17 +10,15 @@ import SwiftUI
 import CoreData
 
 class PlantViewModel: ObservableObject {
-    let moc: NSManagedObjectContext
     @Published var plant: Plant
    
-    init(plant: Plant, moc: NSManagedObjectContext) {
+    init(plant: Plant) {
         self.plant = plant
-        self.moc = moc
     }
     
     func savePlant(completion: (Bool, PlantErrorType?) ->()){
         do {
-            try moc.save()
+            try CoreDataManager.shared.viewContext.save()
             completion(true, nil)
         } catch {
             completion(false, .savePlantToCoreDataError)
@@ -28,12 +26,12 @@ class PlantViewModel: ObservableObject {
     }
     
     func deletePlant(completion: (Bool, PlantErrorType?)->()){
-        moc.delete(plant)
+        CoreDataManager.shared.viewContext.delete(plant)
         completion(true, nil)
     }
     
     func cancelChanges() {
-        moc.rollback()
+        CoreDataManager.shared.viewContext.rollback()
     }
     
     func plantHasChanges() -> Bool {

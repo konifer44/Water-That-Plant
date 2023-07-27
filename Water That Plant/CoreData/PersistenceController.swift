@@ -9,74 +9,21 @@ import Foundation
 import CoreData
 import UIKit
 
-class PersistenceController: ObservableObject {
+class CoreDataManager: ObservableObject {
     // A singleton for our entire app to use
-    static let shared = PersistenceController()
+    static let shared = CoreDataManager()
     
-    // Storage for Core Data
-    let container: NSPersistentContainer
+    let persistentContainer: NSPersistentContainer
     
-    // A test configuration for SwiftUI previews
-    static var previewList: PersistenceController = {
-        let controller = PersistenceController(inMemory: true)
-        let names = ["Fikus", "Kaktus", "Paproć", "Strelicja", "Bananowiec", "Monstera", "Storczyk"]
-        
-        // Create 10 example
-        for _ in 0..<10 {
-            let plant = Plant(context: controller.container.viewContext)
-            
-            plant.name = names.randomElement()!
-            
-            if let image = UIImage(named: "fikus"){
-                plant.image = image
-            }
-           
-            plant.selectedRoom = .bathroom
-            plant.currentSoilHumidity = 21.37
-            plant.currentLighting = 2
-            plant.currentFertilizer = 79
-            plant.recommendedLightingRawValue = 30
-            plant.recommendedTemperature = 22
-        }
-        
-        return controller
-    }()
+    var viewContext: NSManagedObjectContext {
+        return persistentContainer.viewContext
+    }
     
-    static var previewPlant: PersistenceController = {
-        let controller = PersistenceController(inMemory: true)
-      
-        let plant = Plant(context: controller.container.viewContext)
-        plant.name = "Plant"
-        
-        if let image = UIImage(named: "fikus"){
-            plant.image = image
-        }
-       
-        plant.selectedRoom = .bathroom
-        plant.currentSoilHumidity = 21.37
-        plant.currentLighting = 2
-        plant.currentFertilizer = 79
-        plant.recommendedLightingRawValue = 30
-        plant.recommendedTemperature = 22
-        
-        
-        return controller
-    }()
-    
-    // An initializer to load Core Data, optionally able
-    // to use an in-memory store.
-    init(inMemory: Bool = false) {
-        // If you didn't name your model Main you'll need
-        // to change this name below.
-        container = NSPersistentContainer(name: "Plant")
-        
-        if inMemory {
-            container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
-        }
-        
-        container.loadPersistentStores { description, error in
+    private init() {
+        persistentContainer = NSPersistentContainer (name: "Plant")
+        persistentContainer.loadPersistentStores{(description,error)in
             if let error = error {
-                fatalError("Error: \(error.localizedDescription)")
+                fatalError ("Unable to initialize Core Data Stack \(error)")
             }
         }
     }

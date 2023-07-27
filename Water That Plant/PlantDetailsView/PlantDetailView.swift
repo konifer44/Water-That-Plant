@@ -10,7 +10,6 @@ import SwiftUI
 
 struct PlantDetailView: View {
     @State var plant: Plant
-    private let topBarHeight: CGFloat = 330
     
     var body: some View {
         GeometryReader { geometry in
@@ -36,11 +35,9 @@ struct PlantDetailView: View {
                             .padding(EdgeInsets(top: 0, leading: 20, bottom: 10, trailing: 20))
                         
                         PlantStatistics()
-                        //.frame(height: geometry.size.height / 3)
                             .padding()
                     }
                 }
-                
             }
         }
         .edgesIgnoringSafeArea(.all)

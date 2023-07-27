@@ -11,7 +11,8 @@ import SwiftUI
 import CoreData
 
 struct PlantListView: View {
-    @Environment(\.managedObjectContext) var moc
+    @Environment(\.managedObjectContext) var viewContext
+
     @ObservedObject private var viewModel: PlantListViewModel
     @FetchRequest(
         sortDescriptors: [
@@ -26,17 +27,15 @@ struct PlantListView: View {
     private let plantListTileHeight: CGFloat = 100
     private let plantTileHeight: CGFloat = 150
     
-  
     init(viewModel: PlantListViewModel){
         self.viewModel = viewModel
     }
     
-    
     var body: some View {
         NavigationStack(path: $viewModel.presentedPlantPath) {
             ZStack(alignment: .top) {
-                ScrollView {
-                    VStack(spacing: 0) {
+                List {
+                    //VStack(spacing: 0) {
                         ForEach(plants, id: \.self) { plant in
                             NavigationLink(value: plant) {
                                 PlantListTileView(plant: plant)
@@ -46,20 +45,19 @@ struct PlantListView: View {
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
-                    }
+                        .onDelete(perform: delete)
+                   // }
                     .padding(.bottom, plantListTopBarHeight + 20)
                     .offset(y: plantListTopBarHeight + 10)
                 }
-                
-                
-                
+                .listStyle(.plain)
+            
                 PlantListTopBar(addPlant: $presentingAddPlantView, sortAction: viewModel.sortAction, sortDescriptor: $sortDescriptor)
                     .frame(height: plantListTopBarHeight)
                 
             }
             .navigationDestination(for: Plant.self) { plant in
                 PlantDetailView(plant: plant)
-                //PlantView(viewModel: PlantViewModel(plant: plant, moc: moc))
             }
             .edgesIgnoringSafeArea(.all)
         }
@@ -69,9 +67,17 @@ struct PlantListView: View {
         }
         
         .sheet(isPresented: $presentingAddPlantView) {
-            AddPlantView(viewModel: AddPlantViewModel(moc: moc))
+            AddPlantView(viewModel: AddPlantViewModel(viewContext: viewContext))
         }
     }
+    
+    func delete(at offsets: IndexSet) {
+       for offset in offsets {
+           let plant = plants[offset]
+           viewContext.delete(plant)
+       }
+       try? viewContext.save()
+   }
     
     private func sort(){
         plants.sortDescriptors = [sortDescriptor.descriptor()]
@@ -79,10 +85,8 @@ struct PlantListView: View {
 }
 
 struct PlantListView_Previews: PreviewProvider {
-    static let context = PersistenceController.previewList.container.viewContext
     static var previews: some View {
-        
-        PlantListView(viewModel: PlantListViewModel(moc: context))
-            .environment(\.managedObjectContext, context)
+        PlantListView(viewModel: PlantListViewModel(viewContext: CoreDataManager.shared.viewContext))
+            .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
     }
 }

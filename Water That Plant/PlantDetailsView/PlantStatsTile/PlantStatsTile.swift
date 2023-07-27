@@ -44,7 +44,7 @@ struct PlantStatsTile: View {
             .padding(.trailing, 100)
             
             
-            ProgressBar(progress: 90.0, color: progresBarColor, title: "", icon: "")
+            ProgressBar(progress: Double.random(in: 0...100), color: progresBarColor)
                 .frame(maxWidth: 115)
         }
     }
