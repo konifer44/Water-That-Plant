@@ -27,4 +27,31 @@ class CoreDataManager: ObservableObject {
             }
         }
     }
+    
+    // A test configuration for SwiftUI previews
+    static var previewList: CoreDataManager = {
+        let controller = CoreDataManager()
+        let names = ["Fikus", "Kaktus", "Paproć", "Strelicja", "Bananowiec", "Monstera", "Storczyk"]
+        
+        // Create 10 example
+        for _ in 0..<10 {
+            let plant = Plant(context: controller.viewContext)
+            
+            plant.name = names.randomElement()!
+            
+            if let image = UIImage(named: "fikus"){
+                plant.image = image
+            }
+           
+            plant.selectedRoom = .bathroom
+            plant.currentSoilHumidity = 21.37
+            plant.currentLighting = 2
+            plant.currentFertilizer = 79
+            plant.recommendedLightingRawValue = 30
+            plant.recommendedTemperature = 22
+        }
+        
+        return controller
+    }()
+
 }

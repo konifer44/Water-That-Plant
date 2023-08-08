@@ -12,8 +12,6 @@ import CoreData
 
 
 class PlantListViewModel: ObservableObject {
-    @Published var presentedPlantPath = [Plant]()
-    
     let viewContext: NSManagedObjectContext
     
     init(viewContext: NSManagedObjectContext){
@@ -23,8 +21,6 @@ class PlantListViewModel: ObservableObject {
     func sortAction(){
         
     }
-    
-    
 }
 
 

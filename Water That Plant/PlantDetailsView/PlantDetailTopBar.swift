@@ -12,13 +12,13 @@ struct PlantDetailTopBar: View {
     @State var height: CGFloat
     
     let gradient = LinearGradient(
-            gradient: Gradient(stops: [
-                .init(color: .white, location: 0),
-                .init(color: .clear, location: 0.9)
-            ]),
-            startPoint: .bottom,
-            endPoint: .top
-        )
+        gradient: Gradient(stops: [
+            .init(color: .white, location: 0),
+            .init(color: .clear, location: 0.9)
+        ]),
+        startPoint: .bottom,
+        endPoint: .top
+    )
     
     var body: some View {
         GeometryReader { geometry in
@@ -29,13 +29,10 @@ struct PlantDetailTopBar: View {
                     .frame(width: geometry.size.width, height: height)
                     .clipped()
                 
-                
                 Rectangle()
                     .fill(.white)
                     .frame(height: height / 2)
-                    .mask(gradient) /// mask the blurred image using the gradient's alpha values
-            
-             
+                    .mask(gradient)
                 
                 HStack(alignment: .bottom) {
                     VStack(alignment: .leading) {
@@ -43,7 +40,7 @@ struct PlantDetailTopBar: View {
                             .font(.title)
                             .bold()
                             .foregroundColor(.oliveGreen)
-                        Text("Horikita best girl")
+                        Text(plant.selectedRoom.rawValue)
                             .font(.headline)
                             .bold()
                             .foregroundColor(Color(uiColor: .systemGray2))
@@ -51,7 +48,7 @@ struct PlantDetailTopBar: View {
                     
                     
                     .padding()
-                   
+                    
                     Spacer()
                     
                     TemperatureAndLightCard(plant: plant)
@@ -71,7 +68,7 @@ struct PlantDetail_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
             PlantDetailTopBar(plant: previewPlant, height: geo.size.height / 2.5)
-                
+            
         }
     }
 }

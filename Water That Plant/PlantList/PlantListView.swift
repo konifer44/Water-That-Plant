@@ -32,26 +32,34 @@ struct PlantListView: View {
     }
     
     var body: some View {
-        NavigationStack(path: $viewModel.presentedPlantPath) {
+        NavigationStack() {
             ZStack(alignment: .top) {
                 List {
-                    //VStack(spacing: 0) {
-                        ForEach(plants, id: \.self) { plant in
-                            NavigationLink(value: plant) {
-                                PlantListTileView(plant: plant)
-                                    .frame(height: plantListTileHeight)
-                                    .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
-                                   
-                            }
-                            .buttonStyle(PlainButtonStyle())
+                    Spacer(minLength: plantTileHeight)
+                    ForEach(plants, id: \.self) { plant in
+                        NavigationLink(value: plant) {
+                            PlantListTileView(plant: plant)
+                                .frame(height: plantListTileHeight)
+                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                         }
-                        .onDelete(perform: delete)
-                   // }
-                    .padding(.bottom, plantListTopBarHeight + 20)
-                    .offset(y: plantListTopBarHeight + 10)
+                        .swipeActions {
+                            Button("Delete") {
+                                
+                            }
+                            .tint(.red)
+                            Button("Edit") {
+                                print("Awesome!")
+                            }
+                            .tint(.blue)
+                        }
+                    }
+                    .onDelete(perform: delete)
+                    
                 }
+                .offset(y: plantTileHeight)
+                // .padding(.bottom, plantListTopBarHeight + 20)
                 .listStyle(.plain)
-            
+                
                 PlantListTopBar(addPlant: $presentingAddPlantView, sortAction: viewModel.sortAction, sortDescriptor: $sortDescriptor)
                     .frame(height: plantListTopBarHeight)
                 
@@ -67,7 +75,7 @@ struct PlantListView: View {
         }
         
         .sheet(isPresented: $presentingAddPlantView) {
-            AddPlantView(viewModel: AddPlantViewModel(viewContext: viewContext))
+            AddPlantView(viewModel: AddPlantViewModel())
         }
     }
     
@@ -85,6 +93,7 @@ struct PlantListView: View {
 }
 
 struct PlantListView_Previews: PreviewProvider {
+   
     static var previews: some View {
         PlantListView(viewModel: PlantListViewModel(viewContext: CoreDataManager.shared.viewContext))
             .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)

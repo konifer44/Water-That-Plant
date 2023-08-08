@@ -10,6 +10,7 @@ import SwiftUI
 
 struct PlantDetailView: View {
     @State var plant: Plant
+    @State private var isShowingEditPlantView: Bool = false
     
     var body: some View {
         GeometryReader { geometry in
@@ -41,6 +42,20 @@ struct PlantDetailView: View {
             }
         }
         .edgesIgnoringSafeArea(.all)
+        .toolbar {
+            Button {
+                isShowingEditPlantView = true
+            } label: {
+                Text("Edit")
+            }
+
+        }
+        .sheet(isPresented: $isShowingEditPlantView) {
+            let viewModel = AddPlantViewModel(editPlant: plant)
+            
+            let view = AddPlantView(viewModel: viewModel)
+            view
+        }
     }
 }
 
@@ -48,7 +63,9 @@ struct PlantDetailView_Previews: PreviewProvider {
     @State static var plant = previewPlant
     
     static var previews: some View {
-        PlantDetailView(plant: plant)
+        NavigationStack {
+            PlantDetailView(plant: plant)
+        }
     }
 }
 
