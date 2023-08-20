@@ -9,9 +9,7 @@ import SwiftUI
 import UIKit
 
 struct PlantListTopBar: View {
-    @Binding var addPlant: Bool
-    var sortAction: () -> Void
-    
+    @Binding var addPlantViewModel: AddPlantViewModel?
     @Binding var sortDescriptor: SortDescriptors
     
     var body: some View {
@@ -31,7 +29,7 @@ struct PlantListTopBar: View {
                         
                         Spacer()
                         Button {
-                            addPlant = true
+                           addPlantViewModel = AddPlantViewModel()
                         } label: {
                             Image(systemName: "plus.square.fill")
                                 .foregroundStyle(Color.oliveGreen, .yellow)
@@ -92,8 +90,8 @@ struct PlantListTopBar: View {
 struct PlantListTopBar_Previews: PreviewProvider {
     static var previews: some View {
         GeometryReader { geo in
-            
-            PlantListTopBar(addPlant: .constant(false), sortAction: {}, sortDescriptor: .constant(.name))
+            PlantListTopBar(addPlantViewModel: .constant(nil),
+                            sortDescriptor: .constant(.name))
                 .frame(height: geo.size.height / 3)
             
         }

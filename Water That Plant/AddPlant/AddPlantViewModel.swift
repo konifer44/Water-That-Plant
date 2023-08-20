@@ -11,9 +11,10 @@ import PhotosUI
 import CoreData
 
 @MainActor
-class AddPlantViewModel: ObservableObject {
+class AddPlantViewModel: ObservableObject, Identifiable {
+    let id: UUID = UUID()
     let viewContext: NSManagedObjectContext = CoreDataManager.shared.viewContext
-   
+    
     @Published var plant: Plant
     @Published var selectedPhotoItem: PhotosPickerItem? {
         didSet {
@@ -22,37 +23,29 @@ class AddPlantViewModel: ObservableObject {
     }
     @Published var selectedPhoto: UIImage? {
         didSet {
-           setPhoto()
+            setPhoto()
         }
     }
-   
-//MARK: - Init
+    
+    //MARK: - Init
     init(){
-        let newPlant = Plant(context: viewContext)
-
-        
-        self.plant = newPlant
+        let temporaryViewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
+        self.plant = Plant(context: temporaryViewContext)
     }
     
- 
     init(editPlant: Plant) {
         self.plant = editPlant
     }
     
     
-//MARK: - Methods
-  func savePlant(completion: (Bool, PlantErrorType??) ->()){
-//        let newPlant = Plant(context: viewContext)
-//        newPlant.id = UUID()
-//        newPlant.name = name
-//        newPlant.selectedRoom = selectedRoom
-//        newPlant.recommendedHumidity = recommendedHumidity
-//        newPlant.recommendedLighting = recommendedLighting
-//        newPlant.recommendedFertilization = recommendedFertilization
-//        newPlant.dateOfBuy = dateOfBuy
-//        newPlant.isFavourite = isFavourite
-//        newPlant.peripheralUUID = peripheralUUID
-//        newPlant.image = image
+    //MARK: - Methods
+    func deletePlant(){
+        viewContext.delete(plant)
+    }
+    
+    func savePlant(completion: (Bool, PlantErrorType??) ->()){
+        var newPlant = Plant(context: viewContext)
+        plant = newPlant
         
         do {
             try viewContext.save()
@@ -64,21 +57,9 @@ class AddPlantViewModel: ObservableObject {
     }
     
     func clearView(){
-//        name = ""
-//        selectedRoom = .defaultRoom
-//        recommendedHumidity = .medium
-//        recommendedLighting = .medium
-//        recommendedFertilization = .onceAWeek
-//        dateOfBuy = Date()
-//        isFavourite = false
-//        peripheralUUID = nil
-//        image = UIImage()
+      
     }
     
-    func removePhoto(){
-        selectedPhotoItem = nil
-        selectedPhoto = nil
-    }
     
     private func convertPhoto(){
         Task {
@@ -95,5 +76,11 @@ class AddPlantViewModel: ObservableObject {
             plant.image = selectedPhoto
         }
     }
+    
+    func removePhoto(){
+        selectedPhotoItem = nil
+        selectedPhoto = nil
+    }
+    
 }
 

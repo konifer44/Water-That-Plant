@@ -12,17 +12,14 @@ import CoreData
 
 struct PlantListView: View {
     @Environment(\.managedObjectContext) var viewContext
-
     @ObservedObject private var viewModel: PlantListViewModel
+    @State var presentingAddPlantView: Bool = false
     @FetchRequest(
         sortDescriptors: [
             SortDescriptor(\.nameRawValue)
         ]
     ) var plants: FetchedResults<Plant>
     
-    @State var sortDescriptor: SortDescriptors = .name
-    @State var presentingAddPlantView: Bool = false
-  
     private let plantListTopBarHeight: CGFloat = 330
     private let plantListTileHeight: CGFloat = 100
     private let plantTileHeight: CGFloat = 150
@@ -32,7 +29,7 @@ struct PlantListView: View {
     }
     
     var body: some View {
-        NavigationStack() {
+        NavigationStack {
             ZStack(alignment: .top) {
                 List {
                     Spacer(minLength: plantTileHeight)
@@ -43,25 +40,18 @@ struct PlantListView: View {
                                 .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                         }
                         .swipeActions {
-                            Button("Delete") {
-                                
-                            }
-                            .tint(.red)
-                            Button("Edit") {
-                                print("Awesome!")
-                            }
-                            .tint(.blue)
+                          editAction
                         }
                     }
-                    .onDelete(perform: delete)
+                    .onDelete(perform: deleteAction)
                     
                 }
                 .offset(y: plantTileHeight)
-                // .padding(.bottom, plantListTopBarHeight + 20)
                 .listStyle(.plain)
                 
-                PlantListTopBar(addPlant: $presentingAddPlantView, sortAction: viewModel.sortAction, sortDescriptor: $sortDescriptor)
-                    .frame(height: plantListTopBarHeight)
+                PlantListTopBar(addPlantViewModel: $viewModel.addPlantViewModel,
+                                sortDescriptor: $viewModel.sortDescriptor)
+                .frame(height: plantListTopBarHeight)
                 
             }
             .navigationDestination(for: Plant.self) { plant in
@@ -69,31 +59,44 @@ struct PlantListView: View {
             }
             .edgesIgnoringSafeArea(.all)
         }
-        .onChange(of: sortDescriptor) { newValue in
-            let newSortDescriptor = newValue.descriptor()
-            plants.sortDescriptors = [newSortDescriptor]
+        .onChange(of: viewModel.sortDescriptor) { newSortDescriptor in
+            setSortDescriptor(for: newSortDescriptor)
         }
         
-        .sheet(isPresented: $presentingAddPlantView) {
-            AddPlantView(viewModel: AddPlantViewModel())
+        .sheet(item: $viewModel.addPlantViewModel) { viewModel in
+            AddPlantView(viewModel: viewModel)
         }
     }
     
-    func delete(at offsets: IndexSet) {
-       for offset in offsets {
-           let plant = plants[offset]
-           viewContext.delete(plant)
-       }
-       try? viewContext.save()
-   }
     
-    private func sort(){
-        plants.sortDescriptors = [sortDescriptor.descriptor()]
+    
+    private func setSortDescriptor(for newSortDescriptor: SortDescriptors){
+        let newSortDescriptor = newSortDescriptor.descriptor()
+        plants.sortDescriptors = [newSortDescriptor]
+    }
+    
+    var editAction: some View {
+        Button("Edit") {
+            print("Awesome!")
+        }
+        .tint(.blue)
+    }
+    
+    func deleteAction(at offsets: IndexSet) {
+        for offset in offsets {
+            let plant = plants[offset]
+            viewContext.delete(plant)
+        }
+        try? viewContext.save()
     }
 }
 
+
+
+
+
+//MARK: - Previews
 struct PlantListView_Previews: PreviewProvider {
-   
     static var previews: some View {
         PlantListView(viewModel: PlantListViewModel(viewContext: CoreDataManager.shared.viewContext))
             .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)

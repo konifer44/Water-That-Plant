@@ -51,10 +51,10 @@ struct PlantDetailView: View {
 
         }
         .sheet(isPresented: $isShowingEditPlantView) {
-            let viewModel = AddPlantViewModel(editPlant: plant)
+            //let viewModel = AddPlantViewModel(editPlant: plant)
             
-            let view = AddPlantView(viewModel: viewModel)
-            view
+           // let view = AddPlantView(viewModel: viewModel)
+          //  view
         }
     }
 }

@@ -12,15 +12,21 @@ import CoreData
 
 
 class PlantListViewModel: ObservableObject {
-    let viewContext: NSManagedObjectContext
+    //MARK: - Public properties
+    @Published var sortDescriptor: SortDescriptors = .name
+    @Published var addPlantViewModel: AddPlantViewModel?
     
+    let viewContext: NSManagedObjectContext
+
+    
+    //MARK: - Init
     init(viewContext: NSManagedObjectContext){
         self.viewContext = viewContext
     }
     
-    func sortAction(){
-        
-    }
+    
+    //MARK: - Public methods
+  
 }
 
 

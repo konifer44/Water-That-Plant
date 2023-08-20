@@ -129,6 +129,9 @@ struct AddPlantView: View {
                 .edgesIgnoringSafeArea(.top)
             }
         }
+        .onDisappear{
+            viewModel.deletePlant()
+        }
     }
     
     let gradient = LinearGradient(
