@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct PlantListTileView: View {
-    @State var plant: Plant
+    @ObservedObject var plant: Plant
     var body: some View {
         HStack{
-            Image("fikus")
+            
+            Image(uiImage: plant.image)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
                 .cornerRadius(25)
                 .padding(10)
-                
+            
+            
             VStack(alignment: .leading){
                 Text(plant.name)
                     .font(.title2)

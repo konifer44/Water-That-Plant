@@ -9,7 +9,12 @@ import SwiftUI
 
 
 struct PlantDetailView: View {
-    @State var plant: Plant
+    @Environment(\.managedObjectContext) var viewContext
+    @ObservedObject var plant: Plant {
+        didSet {
+            print("set")
+        }
+    }
     @State private var isShowingEditPlantView: Bool = false
     
     var body: some View {
@@ -50,12 +55,13 @@ struct PlantDetailView: View {
             }
 
         }
-        .sheet(isPresented: $isShowingEditPlantView) {
-            //let viewModel = AddPlantViewModel(editPlant: plant)
-            
-           // let view = AddPlantView(viewModel: viewModel)
-          //  view
+        
+        .sheet(isPresented: $isShowingEditPlantView){
+            AddPlantView(viewModel: AddPlantViewModel(editPlant: plant))
+                .environment(\.managedObjectContext, viewContext)
         }
+        
+        
     }
 }
 

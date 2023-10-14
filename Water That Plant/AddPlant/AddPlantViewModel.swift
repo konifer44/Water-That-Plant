@@ -13,9 +13,21 @@ import CoreData
 @MainActor
 class AddPlantViewModel: ObservableObject, Identifiable {
     let id: UUID = UUID()
-    let viewContext: NSManagedObjectContext = CoreDataManager.shared.viewContext
+    var viewContext: NSManagedObjectContext = CoreDataManager.shared.viewContext
     
-    @Published var plant: Plant
+    @Published var editPlant: Plant?
+    
+    @Published var title: String = "Add new"
+    @Published var name = "New plant"
+    @Published var selectedRoom: RoomsType = .defaultRoom
+    @Published var recommendedHumidity: RecommendedHumidityType = .medium
+    @Published var recommendedLighting: RecommendedLightingType = .medium
+    @Published var recommendedFertilization: RecommendedFertilizationType = .onceAWeek
+    @Published var dateOfBuy = Date()
+    @Published var isFavourite = false
+    @Published var peripheralUUID: UUID?
+    @Published var image: UIImage = UIImage()
+    
     @Published var selectedPhotoItem: PhotosPickerItem? {
         didSet {
             convertPhoto()
@@ -29,25 +41,50 @@ class AddPlantViewModel: ObservableObject, Identifiable {
     
     //MARK: - Init
     init(){
-        let temporaryViewContext = NSManagedObjectContext(concurrencyType: .mainQueueConcurrencyType)
-        self.plant = Plant(context: temporaryViewContext)
+        _editPlant = Published(initialValue: nil)
     }
     
     init(editPlant: Plant) {
-        self.plant = editPlant
+        self.editPlant = editPlant
+        
+        title = "Edit plant"
+        name = editPlant.name
+        selectedRoom = editPlant.selectedRoom
+        recommendedHumidity = editPlant.recommendedHumidity
+        recommendedLighting = editPlant.recommendedLighting
+        recommendedFertilization = editPlant.recommendedFertilization
+        dateOfBuy = editPlant.dateOfBuy
+        isFavourite = editPlant.isFavourite
+        peripheralUUID = editPlant.peripheralUUID
+        image = editPlant.image
+        
     }
     
     
     //MARK: - Methods
     func deletePlant(){
-        viewContext.delete(plant)
+        if let editPlant {
+            viewContext.delete(editPlant)
+        }
     }
     
     func savePlant(completion: (Bool, PlantErrorType??) ->()){
-        var newPlant = Plant(context: viewContext)
-        plant = newPlant
-        
+        if editPlant == nil {
+           saveNewPlant()
+            
+        }
+        editPlant?.name = name
+        editPlant?.selectedRoom = selectedRoom
+        editPlant?.recommendedHumidity = recommendedHumidity
+        editPlant?.recommendedLighting = recommendedLighting
+        editPlant?.recommendedFertilization = recommendedFertilization
+        editPlant?.dateOfBuy = dateOfBuy
+        editPlant?.isFavourite = isFavourite
+        editPlant?.peripheralUUID = peripheralUUID
+        editPlant?.image = image
+       
         do {
+            editPlant?.objectWillChange.send()
             try viewContext.save()
             completion(true, nil)
         } catch {
@@ -56,10 +93,20 @@ class AddPlantViewModel: ObservableObject, Identifiable {
         }
     }
     
-    func clearView(){
-      
+    private func saveNewPlant(){
+        let newPlant = Plant(context: viewContext)
+        newPlant.id = UUID()
+        newPlant.name = name
+        newPlant.selectedRoom = selectedRoom
+        newPlant.recommendedHumidity = recommendedHumidity
+        newPlant.recommendedLighting = recommendedLighting
+        newPlant.recommendedFertilization = recommendedFertilization
+        newPlant.dateOfBuy = dateOfBuy
+        newPlant.isFavourite = isFavourite
+        newPlant.peripheralUUID = peripheralUUID
+        newPlant.image = image
+        
     }
-    
     
     private func convertPhoto(){
         Task {
@@ -73,7 +120,7 @@ class AddPlantViewModel: ObservableObject, Identifiable {
     
     private func setPhoto(){
         if let selectedPhoto {
-            plant.image = selectedPhoto
+            image = selectedPhoto
         }
     }
     

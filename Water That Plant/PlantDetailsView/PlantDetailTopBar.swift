@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlantDetailTopBar: View {
-    @State var plant: Plant
+    @ObservedObject var plant: Plant
     @State var height: CGFloat
     
     let gradient = LinearGradient(

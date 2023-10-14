@@ -15,10 +15,9 @@ struct PlantListView: View {
     @ObservedObject private var viewModel: PlantListViewModel
     @State var presentingAddPlantView: Bool = false
     @FetchRequest(
-        sortDescriptors: [
-            SortDescriptor(\.nameRawValue)
-        ]
-    ) var plants: FetchedResults<Plant>
+        sortDescriptors: [SortDescriptor(\.nameRawValue)]
+    )
+    var plants: FetchedResults<Plant>
     
     private let plantListTopBarHeight: CGFloat = 330
     private let plantListTileHeight: CGFloat = 100
@@ -30,34 +29,40 @@ struct PlantListView: View {
     
     var body: some View {
         NavigationStack {
-            ZStack(alignment: .top) {
-                List {
-                    Spacer(minLength: plantTileHeight)
-                    ForEach(plants, id: \.self) { plant in
-                        NavigationLink(value: plant) {
+            TabView {
+                ZStack(alignment: .top) {
+                    
+                    List(plants) { plant in
+                        Spacer(minLength: plantTileHeight)
+                        
+                        NavigationLink {
+                            PlantDetailView(plant: plant)
+                        } label: {
                             PlantListTileView(plant: plant)
-                                .frame(height: plantListTileHeight)
-                                .padding(EdgeInsets(top: 10, leading: 15, bottom: 10, trailing: 15))
                         }
                         .swipeActions {
-                          editAction
+                            editAction
                         }
+                        
+                        // .onDelete(perform: deleteAction)
+                        
                     }
-                    .onDelete(perform: deleteAction)
+                    .offset(y: plantTileHeight)
+                    .listStyle(.plain)
+                    .tabItem {
+                                       Label("Menu", systemImage: "list.dash")
+                                   }
+                    PlantListTopBar(addPlantViewModel: $viewModel.addPlantViewModel,
+                                    sortDescriptor: $viewModel.sortDescriptor)
+                    .frame(height: plantListTopBarHeight)
                     
                 }
-                .offset(y: plantTileHeight)
-                .listStyle(.plain)
                 
-                PlantListTopBar(addPlantViewModel: $viewModel.addPlantViewModel,
-                                sortDescriptor: $viewModel.sortDescriptor)
-                .frame(height: plantListTopBarHeight)
-                
+                .edgesIgnoringSafeArea(.all)
+                .tabItem {
+                                    Label("Alerts", systemImage: "list.dash")
+                                }
             }
-            .navigationDestination(for: Plant.self) { plant in
-                PlantDetailView(plant: plant)
-            }
-            .edgesIgnoringSafeArea(.all)
         }
         .onChange(of: viewModel.sortDescriptor) { newSortDescriptor in
             setSortDescriptor(for: newSortDescriptor)
@@ -98,7 +103,7 @@ struct PlantListView: View {
 //MARK: - Previews
 struct PlantListView_Previews: PreviewProvider {
     static var previews: some View {
-        PlantListView(viewModel: PlantListViewModel(viewContext: CoreDataManager.shared.viewContext))
-            .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
+        PlantListView(viewModel: PlantListViewModel(viewContext: CoreDataManager.previewList.viewContext))
+            .environment(\.managedObjectContext, CoreDataManager.previewList.viewContext)
     }
 }

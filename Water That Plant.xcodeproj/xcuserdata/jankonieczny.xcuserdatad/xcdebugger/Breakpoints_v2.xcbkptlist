@@ -113,6 +113,21 @@
                   endingLineNumber = "65"
                   offsetFromSymbolStart = "228">
                </Location>
+               <Location
+                  uuid = "9C8B6F9E-ADD5-4A54-9182-D52D78A5E45D - dbac59a05073c0d4"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Water_That_Plant.BLEManager.disconnectFromPeripheral(peripheral: __C.CBPeripheral) -&gt; ()"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/Managers/BLEManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "65"
+                  endingLineNumber = "65"
+                  offsetFromSymbolStart = "212">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -224,23 +239,149 @@
                   endingLineNumber = "16"
                   offsetFromSymbolStart = "396">
                </Location>
+               <Location
+                  uuid = "87413FF4-10FD-4C34-B254-92DC2A26CF00 - efe5d7fe4602ed1d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; SwiftUI.TupleView&lt;(&lt;&lt;opaque return type of SwiftUI.View.padding(SwiftUI.Edge.Set, Swift.Optional&lt;CoreGraphics.CGFloat&gt;) -&gt; some&gt;&gt;.0, SwiftUI.Spacer)&gt; in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.Image, &lt;&lt;opaque return type of SwiftUI.View.background&lt;&#x3c4;_0_0 where &#x3c4;_1_0: SwiftUI.ShapeStyle&gt;(_: &#x3c4;_1_0, ignoresSafeAreaEdges: SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0)&gt; in closure #1 (SwiftUI.GeometryProxy) -&gt; &lt;&lt;opaque return type of SwiftUI.View.edgesIgnoringSafeArea(SwiftUI.Edge.Set) -&gt; some&gt;&gt;.0 in Water_That_Plant.PlantTile.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/Water%20That%20Plant/PlantList/PlantTile.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "17"
+                  endingLineNumber = "17"
+                  offsetFromSymbolStart = "56">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "56A3FBD0-EC39-4D2F-A1ED-C1B8F582453D"
+            uuid = "FD1B175B-9D42-4686-9775-68CD60D76328"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Water That Plant/AddPlant/AddPlantViewModel.swift"
+            filePath = "test.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "init()"
-            landmarkType = "7">
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "FD1B175B-9D42-4686-9775-68CD60D76328 - 227c7c819dab4f41"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; SwiftUI.Text in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in Water_That_Plant.test.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  uuid = "FD1B175B-9D42-4686-9775-68CD60D76328 - 91e52cbbf857a462"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in Water_That_Plant.test.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "22"
+                  endingLineNumber = "22"
+                  offsetFromSymbolStart = "384">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9E06447B-9AD9-4C71-9999-F55BA8600E8C"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "test.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "body"
+            landmarkType = "24">
+            <Locations>
+               <Location
+                  uuid = "9E06447B-9AD9-4C71-9999-F55BA8600E8C - 91e52cbbf857a420"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in Water_That_Plant.test.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "212">
+               </Location>
+               <Location
+                  uuid = "9E06447B-9AD9-4C71-9999-F55BA8600E8C - 227c7c819dab4f62"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #2 () -&gt; SwiftUI.Text in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in Water_That_Plant.test.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "21"
+                  endingLineNumber = "21"
+                  offsetFromSymbolStart = "64">
+               </Location>
+               <Location
+                  uuid = "9E06447B-9AD9-4C71-9999-F55BA8600E8C - 91e52cbbf857a420"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 () -&gt; SwiftUI.TupleView&lt;(SwiftUI.TextField&lt;SwiftUI.Text&gt;, SwiftUI.Button&lt;SwiftUI.Text&gt;)&gt; in Water_That_Plant.test.body.getter : some"
+                  moduleName = "Water That Plant"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jankonieczny/Desktop/Water%20That%20Plant/test.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "20"
+                  endingLineNumber = "20"
+                  offsetFromSymbolStart = "140">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7345282C-A207-4DF3-9C5A-AAA7ADF9AC20"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Water That Plant/PlantDetailsView/PlantDetailView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "plant"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

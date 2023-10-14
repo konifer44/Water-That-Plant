@@ -43,11 +43,14 @@ struct PlantListTopBar: View {
                 }
                 .background(
                     VStack(spacing: 0) {
-                        Rectangle()
-                            .fill(Color.oliveGreenGradient)
-                            .background(Color.white)
-                            .cornerRadius(90, corners: .bottomLeft)
                         
+                        
+                        UnevenRoundedRectangle(cornerRadii:
+                                .init(bottomLeading: 45),
+                                               style: .circular)
+                                .fill(Color.oliveGreenGradient)
+                                .background(Color.clear)
+                     
                         
                         HStack {
                             Label("Your plants", systemImage: "leaf")

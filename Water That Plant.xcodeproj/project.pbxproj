@@ -29,6 +29,8 @@
 		F98872D62A7FE3B8002E9484 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98872D52A7FE3B8002E9484 /* ProgressBarView.swift */; };
 		F98872D92A7FEF9D002E9484 /* PlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98872D72A7FEF9D002E9484 /* PlantView.swift */; };
 		F98872DA2A7FEF9D002E9484 /* PlantViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98872D82A7FEF9D002E9484 /* PlantViewModel.swift */; };
+		F98A52A62ADB0D96005A261C /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A52A52ADB0D96005A261C /* MainView.swift */; };
+		F98A52A82ADB0FD9005A261C /* MainList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98A52A72ADB0FD9005A261C /* MainList.swift */; };
 		F98FACA62A643C5100BA1DD6 /* AddPlantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */; };
 		F996D48A2A5F170A00FF0DEF /* PlantTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996D4892A5F170A00FF0DEF /* PlantTile.swift */; };
 		F996D48C2A5F174600FF0DEF /* DataExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F996D48B2A5F174600FF0DEF /* DataExtension.swift */; };
@@ -66,6 +68,8 @@
 		F98872D52A7FE3B8002E9484 /* ProgressBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		F98872D72A7FEF9D002E9484 /* PlantView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantView.swift; sourceTree = "<group>"; };
 		F98872D82A7FEF9D002E9484 /* PlantViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlantViewModel.swift; sourceTree = "<group>"; };
+		F98A52A52ADB0D96005A261C /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		F98A52A72ADB0FD9005A261C /* MainList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainList.swift; sourceTree = "<group>"; };
 		F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlantView.swift; sourceTree = "<group>"; };
 		F996D4892A5F170A00FF0DEF /* PlantTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlantTile.swift; sourceTree = "<group>"; };
 		F996D48B2A5F174600FF0DEF /* DataExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataExtension.swift; sourceTree = "<group>"; };
@@ -195,8 +199,8 @@
 			isa = PBXGroup;
 			children = (
 				F98FACA52A643C5100BA1DD6 /* AddPlantView.swift */,
-				F98872B92A72D08A002E9484 /* AddPlantViewModel.swift */,
 				F98872D72A7FEF9D002E9484 /* PlantView.swift */,
+				F98872B92A72D08A002E9484 /* AddPlantViewModel.swift */,
 				F98872D82A7FEF9D002E9484 /* PlantViewModel.swift */,
 			);
 			path = AddPlant;
@@ -206,6 +210,8 @@
 			isa = PBXGroup;
 			children = (
 				F947E2B42A2B321400DD91DD /* PlantListView.swift */,
+				F98A52A52ADB0D96005A261C /* MainView.swift */,
+				F98A52A72ADB0FD9005A261C /* MainList.swift */,
 				F9A780C72A57203800F6E3AA /* PlantListTopBar.swift */,
 				F996D4892A5F170A00FF0DEF /* PlantTile.swift */,
 				F9A7806C2A4232EB00F6E3AA /* PlantListTileView.swift */,
@@ -303,8 +309,10 @@
 				F946FA962A5CA7560016C794 /* DoubleExtension.swift in Sources */,
 				F9B8AEA82A609EE600D4BD8B /* PlantStatistics.swift in Sources */,
 				F98872BA2A72D08A002E9484 /* AddPlantViewModel.swift in Sources */,
+				F98A52A62ADB0D96005A261C /* MainView.swift in Sources */,
 				F947E2CD2A2B38D000DD91DD /* SensorsListViewModel.swift in Sources */,
 				F98872D92A7FEF9D002E9484 /* PlantView.swift in Sources */,
+				F98A52A82ADB0FD9005A261C /* MainList.swift in Sources */,
 				F946FA8C2A5CA6C00016C794 /* PlantStatsTile.swift in Sources */,
 				F947E2C72A2B33AD00DD91DD /* BLEManager.swift in Sources */,
 				F947E2C32A2B32A100DD91DD /* Plant.xcdatamodeld in Sources */,
@@ -452,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Water That Plant/Preview Content\"";
@@ -472,6 +481,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.koniecznyjan.Water-That-Plant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -483,6 +493,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Water That Plant/Preview Content\"";
@@ -503,6 +514,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.koniecznyjan.Water-That-Plant";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
