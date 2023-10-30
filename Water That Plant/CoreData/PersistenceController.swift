@@ -10,7 +10,6 @@ import CoreData
 import UIKit
 
 class CoreDataManager: ObservableObject {
-    // A singleton for our entire app to use
     static let shared = CoreDataManager()
     
     let persistentContainer: NSPersistentContainer
@@ -36,7 +35,7 @@ class CoreDataManager: ObservableObject {
         // Create 10 example
         for _ in 0..<10 {
             let plant = Plant(context: controller.viewContext)
-            
+            plant.id = UUID()
             plant.name = names.randomElement()!
             
             if let image = UIImage(named: "fikus"){

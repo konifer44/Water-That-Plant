@@ -11,9 +11,8 @@ import SwiftUI
 struct Water_That_PlantApp: App {
     var body: some Scene {
         WindowGroup {
-            let viewContext = CoreDataManager.shared.viewContext
-            PlantListView(viewModel: PlantListViewModel(viewContext: viewContext))
-                .environment(\.managedObjectContext, viewContext)
+            MainView()
+                .environment(\.managedObjectContext, CoreDataManager.shared.viewContext)
         }
     }
 }

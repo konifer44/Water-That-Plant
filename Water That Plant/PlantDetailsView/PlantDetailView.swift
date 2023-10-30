@@ -21,7 +21,8 @@ struct PlantDetailView: View {
         GeometryReader { geometry in
             VStack(spacing: 0){
                 PlantDetailTopBar(plant: plant, height: geometry.size.height / 2.5)
-                    .frame(height: geometry.size.height / 2.5)
+                
+                    .frame(height: geometry.size.height / 3)
                 ScrollView {
                     VStack(alignment: .leading){
                         Spacer(minLength: 20)
@@ -58,7 +59,6 @@ struct PlantDetailView: View {
         
         .sheet(isPresented: $isShowingEditPlantView){
             AddPlantView(viewModel: AddPlantViewModel(editPlant: plant))
-                .environment(\.managedObjectContext, viewContext)
         }
         
         
@@ -67,10 +67,11 @@ struct PlantDetailView: View {
 
 struct PlantDetailView_Previews: PreviewProvider {
     @State static var plant = previewPlant
-    
+       
     static var previews: some View {
         NavigationStack {
             PlantDetailView(plant: plant)
+                .environment(\.managedObjectContext, CoreDataManager.previewList.viewContext)
         }
     }
 }

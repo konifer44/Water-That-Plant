@@ -9,21 +9,23 @@ import SwiftUI
 
 struct MainView: View {
     var body: some View {
-        NavigationStack{
-            TabView{
-                List(){
-                    
-                }
-                .tabItem {
-                    Label("Menu", systemImage: "list.dash")
-                }
+        TabView{
+            NavigationStack {
+                PlantList()
+                    .environment(\.managedObjectContext, CoreDataManager.previewList.viewContext)
                 
-                List(){
-                    
-                }
-                .tabItem {
-                    Label("Order", systemImage: "square.and.pencil")
-                }
+            }
+            .tabItem {
+                Label("Plants", systemImage: "leaf")
+            }
+            
+            NavigationStack {
+                PlantList()
+                    .environment(\.managedObjectContext, CoreDataManager.previewList.viewContext)
+                
+            }
+            .tabItem {
+                Label("Settings", systemImage: "gear")
             }
         }
     }

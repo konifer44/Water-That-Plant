@@ -8,17 +8,8 @@
 import SwiftUI
 
 struct PlantDetailTopBar: View {
-    @ObservedObject var plant: Plant
+    @State var plant: Plant
     @State var height: CGFloat
-    
-    let gradient = LinearGradient(
-        gradient: Gradient(stops: [
-            .init(color: .white, location: 0),
-            .init(color: .clear, location: 0.9)
-        ]),
-        startPoint: .bottom,
-        endPoint: .top
-    )
     
     var body: some View {
         GeometryReader { geometry in
@@ -31,7 +22,7 @@ struct PlantDetailTopBar: View {
                 
                 Rectangle()
                     .fill(.white)
-                    .frame(height: height / 2)
+                    .frame(height: height / 5)
                     .mask(gradient)
                 
                 HStack(alignment: .bottom) {
@@ -54,14 +45,19 @@ struct PlantDetailTopBar: View {
                     TemperatureAndLightCard(plant: plant)
                         .padding()
                 }
-                
-                .foregroundColor(.white)
             }
-            
             .ignoresSafeArea(.all)
         }
     }
     
+    let gradient = LinearGradient(
+        gradient: Gradient(stops: [
+            .init(color: .white, location: 0),
+            .init(color: .clear, location: 0.9)
+        ]),
+        startPoint: .bottom,
+        endPoint: .top
+    )
 }
 
 struct PlantDetail_Previews: PreviewProvider {
@@ -110,7 +106,7 @@ private struct TemperatureAndLightCard: View {
             
         }
         .padding()
-        .background(Color(uiColor: UIColor.systemGray5))
+        .background(.ultraThinMaterial)
         .cornerRadius(20)
     }
 }

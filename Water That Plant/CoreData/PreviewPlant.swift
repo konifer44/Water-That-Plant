@@ -17,7 +17,7 @@ var previewPlant: Plant = {
     if let image = UIImage(named: "fikus"){
         plant.image = image
     }
-   
+
     plant.selectedRoom = .bathroom
     plant.currentSoilHumidity = 21.37
     plant.currentLighting = 2

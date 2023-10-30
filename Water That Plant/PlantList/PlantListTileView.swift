@@ -10,31 +10,54 @@ import SwiftUI
 struct PlantListTileView: View {
     @ObservedObject var plant: Plant
     var body: some View {
-        HStack{
+        HStack(spacing: 10){
             
             Image(uiImage: plant.image)
                 .resizable()
                 .aspectRatio(1, contentMode: .fit)
-                .cornerRadius(25)
-                .padding(10)
+                .cornerRadius(15)
             
             
-            VStack(alignment: .leading){
-                Text(plant.name)
-                    .font(.title2)
-                    .bold()
-                   // .foregroundColor(.oliveGreen)
-                Text("This plant need water (150ml)")
-                    .font(.caption)
-                    .foregroundColor(.gray)
+                .padding(EdgeInsets(top: 13, leading: 13, bottom: 13, trailing: 0))
+            
+            
+            VStack(alignment: .leading, spacing: 8){
+                HStack{
+                    Text(plant.name)
+                        .font(.title2)
+                        .foregroundColor(.oliveGreen)
+                        .bold()
+                    Spacer()
+                    Image(systemName: "chevron.right")
+                        .foregroundStyle(.gray)
+                }
+                .padding(EdgeInsets(top: 15, leading: 0, bottom: 0, trailing: 10))
+                Divider()
+                    .padding(.trailing, 30)
+                
+                
+                VStack(alignment: .leading) {
+                    Label {
+                        Text("Recommendations")
+                    } icon: {
+                        Image(systemName: "exclamationmark.triangle.fill")
+                            .foregroundStyle(.orange)
+                    }
+                    
+                    Group {
+                        Text("• 150ml water")
+                        Text("• 30ml fertilizer")
+                    }
+                    .padding(.leading, 22)
+                    
+                }
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                Spacer()
             }
-           
-            Spacer()
         }
-        .background(Color(uiColor: .systemGray6))
-    
-        .cornerRadius(25)
-        .shadow(color: .gray.opacity(0.5), radius: 5)
+        .background(.thickMaterial)
+        .cornerRadius(15)
     }
 }
 
@@ -42,11 +65,17 @@ struct PlantListTileView_Previews: PreviewProvider {
     let plant = previewPlant
     static var previews: some View {
         
-        PlantListTileView(plant: previewPlant)
-            .frame(maxWidth: .infinity, maxHeight: 140)
-           // .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
-           // .shadow(color: .gray.opacity(0.5), radius: 5)
-          //  .padding()
+        VStack {
+            Spacer()
+            PlantListTileView(plant: previewPlant)
+                .frame(height: 140)
+                .padding()
+            Spacer()
+        }
+        .gradientBackground()
+        // .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+        // .shadow(color: .gray.opacity(0.5), radius: 5)
+        //  .padding()
         
     }
 }

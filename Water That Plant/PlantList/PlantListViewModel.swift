@@ -16,13 +16,11 @@ class PlantListViewModel: ObservableObject {
     @Published var sortDescriptor: SortDescriptors = .name
     @Published var addPlantViewModel: AddPlantViewModel?
     
-    let viewContext: NSManagedObjectContext
+    let viewContext: NSManagedObjectContext = CoreDataManager.shared.viewContext
 
     
     //MARK: - Init
-    init(viewContext: NSManagedObjectContext){
-        self.viewContext = viewContext
-    }
+
     
     
     //MARK: - Public methods
